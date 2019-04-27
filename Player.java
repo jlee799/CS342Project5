@@ -15,6 +15,8 @@ public class Player {
 	private int atk;
 	private int def;
 	
+	private String move;
+	
 	public Player(){
 		username = null;
 		id = 0;
@@ -28,6 +30,8 @@ public class Player {
 		health = 100;
 		atk = 0;
 		def = 0;
+		
+		move = null;
 	}
 	
 	public int getHealth() {
