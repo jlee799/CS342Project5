@@ -22,7 +22,7 @@ public class FXServer extends Application {
 	
 	//StateOfGame serverGame = new StateOfGame();
 	
-	private NetworkConnectionRPS conn = null;
+	private NetworkConnection conn = null;
 	private int portNumInt = 5555;
 	private String inOutString;
 	private String clientListString;
@@ -144,8 +144,8 @@ public class FXServer extends Application {
 		
 	}
 	
-	private ServerRPS createServer() {
-		return new ServerRPS( portNumInt, data-> { 
+	private Server createServer() {
+		return new Server( portNumInt, data-> { 
 			Platform.runLater(()->{
 				
 				processInput( data.toString());
