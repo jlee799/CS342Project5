@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 
 public class FXServer extends Application {
 	
-	//StateOfGame serverGame = new StateOfGame();
+	StateOfGame game = new StateOfGame();
 	
 	private NetworkConnection conn = null;
 	private int portNumInt = 5555;
@@ -157,27 +157,358 @@ public class FXServer extends Application {
 	
 	public void processInput( String data) {
 		
+		addToInOutString( "In: "+data);
+		String[] tokens = data.split("-",-2);
+		
+		switch( tokens[0]) {
+			case "connect":
+				connectUser( tokens[1], tokens[2]);
+			case "roll":
+				game.addRoll( tokens[1], tokens[2]);
+				if( game.everyoneRolled()) {
+					game.setCurrPlayer( game.rollWinner() );
+					try {
+						conn.sendClient( game.getCurrPlayer(), "choose-"+ game.getCurrPlayer());
+					}
+					catch(Exception e) {
+						addToInOutString( "Error: failed to send message to have player choose.");
+					}
+				}
+			case "picked":
+				game.addChoice(tokens[1], tokens[2], tokens[3]);
+				if( game.pickingOver() == 20) {
+					try {
+						conn.sendAll("start");
+					}
+					catch(Exception e) {
+						addToInOutString( "Error: failed to send all players start message.");
+					}
+					game.calcStats();
+					sendStats();
+				}
+				else {
+					game.setCurrPlayer( game.nextPlayer( game.getCurrPlayer()));
+					try {
+						conn.sendClient( game.getCurrPlayer(), "choose-"+ game.getCurrPlayer());
+					}
+					catch(Exception e) {
+						addToInOutString( "Error: failed to send message to have next player choose.");
+					}
+				}
+			case "attack":
+				game.addMoveToPlayer( tokens[1], data);
+				if( game.allAliveMadeMove() ) {
+					processMoves();
+				}
+			case "defend":
+				game.addMoveToPlayer( tokens[1], data);
+				if( game.allAliveMadeMove() ) {
+					processMoves();
+				}
+			case "item":
+				game.addMoveToPlayer( tokens[1], data);
+				if( game.allAliveMadeMove() ) {
+					processMoves();
+				}
+			case "quit":
+				if( tokens[1] == "1") {
+					game.getP1().setHealth(0);
+				}
+				else if( tokens[1] == "2") {
+					game.getP2().setHealth(0);
+				}
+				else if( tokens[1] == "3") {
+					game.getP3().setHealth(0);
+				}
+				else {
+					game.getP4().setHealth(0);
+				}
+				try {
+					conn.closeConnNum( tokens[1]);
+				}
+				catch(Exception e) {
+					addToInOutString("Error: failled to close conn.");
+				}
+				if( game.allAliveMadeMove() ) {
+					processMoves();
+				}
+		}
+	}
+	
+	// this will add the players username to the state of game and send the player the people already connected
+	public void connectUser( String id, String username) {
+		
+		switch(id) {
+			case "1":
+				game.setUsername( id, username);
+			case "2":
+				try {
+					conn.sendClient( id, "connected-1-"+ game.getP2().getUsername());
+					if( game.getP1().getRoll() != 0) {
+						conn.sendClient( id, "roll-1-"+game.getP1().getRoll());
+					}
+					conn.sendAll( "connected-"+id+"-"+username);
+					game.setUsername( id, username);
+					addToClientList( id, username);
+				}
+				catch( Exception e) {
+					addToInOutString( "Error failed to send already connected clients.");
+				}
+			case "3":
+				try {
+					conn.sendClient( id, "connected-1-"+ game.getP1().getUsername());
+					conn.sendClient( id, "connected-2-"+ game.getP2().getUsername());
+					if( game.getP1().getRoll() != 0) {
+						conn.sendClient( id, "roll-1-"+game.getP1().getRoll());
+					}
+					if( game.getP2().getRoll() != 0) {
+						conn.sendClient( id, "roll-2-"+game.getP2().getRoll());
+					}
+					game.setUsername( id, username);
+					addToClientList( id, username);
+					conn.sendAll( "connected-"+id+"-"+username);
+				}
+				catch( Exception e) {
+					addToInOutString( "Error failed to send already connected clients.");
+				}
+			case "4":
+				try {
+					conn.sendClient( id, "connected-1-"+ game.getP1().getUsername());
+					conn.sendClient( id, "connected-2-"+ game.getP2().getUsername());
+					conn.sendClient( id, "connected-3-"+ game.getP3().getUsername());
+					if( game.getP1().getRoll() != 0) {
+						conn.sendClient( id, "roll-1-"+game.getP1().getRoll());
+					}
+					if( game.getP2().getRoll() != 0) {
+						conn.sendClient( id, "roll-2-"+game.getP2().getRoll());
+					}
+					if( game.getP3().getRoll() != 0) {
+						conn.sendClient( id, "roll-3-"+game.getP3().getRoll());
+					}
+					game.setUsername( id, username);
+					addToClientList( id, username);
+					conn.sendAll( "connected-"+id+"-"+username);
+				}
+				catch( Exception e) {
+					addToInOutString( "Error failed to send already connected clients.");
+				}
+		}
 	}
 	
 	
+	
 	// will add the new client to the end of the client list
-	public void addToClientList( String clientNum) {
-		clientListTA.appendText( clientNum+"\n");
+	public void addToClientList( String clientNum, String username) {
+		clientListTA.appendText( "Id: "+ clientNum+ "Username: " + username + "\n");
 	}
 	
 	public void addToInOutString( String line) {
 		inOutTA.appendText( line+"\n");
 	}
 	
+	public void sendStats() {
+		try {
+			// sending atk stat of each player to everyone after calculation
+			conn.sendAll( "atkStat-1-"+ game.getP1().getAtk() );
+			conn.sendAll( "atkStat-2-"+ game.getP2().getAtk() );
+			conn.sendAll( "atkStat-3-"+ game.getP3().getAtk() );
+			conn.sendAll( "atkStat-4-"+ game.getP4().getAtk() );
+			// sending def stat of each player to everyone after calculation
+			conn.sendAll( "defStat-1-"+ game.getP1().getDef() );
+			conn.sendAll( "defStat-2-"+ game.getP2().getDef() );
+			conn.sendAll( "defStat-3-"+ game.getP3().getDef() );
+			conn.sendAll( "defStat-4-"+ game.getP4().getDef() );
+		}
+		catch(Exception e) {
+			addToInOutString( "Error failed to send stats to clients.");
+		}
+	}
+	
+	public void processMoves() {
+		processDefendMoves();
+		processItemMoves();
+		processAttackMoves();
+		if( game.getP1().getMove() != null) {
+			sendTextForMoves( game.getP1().getMove());
+		}
+		if( game.getP2().getMove() != null) {
+			sendTextForMoves( game.getP2().getMove());
+		}
+		if( game.getP3().getMove() != null) {
+			sendTextForMoves( game.getP3().getMove());
+		}
+		if( game.getP4().getMove() != null) {
+			sendTextForMoves( game.getP4().getMove());
+		}
+		game.getP1().setMove(null);
+		game.getP2().setMove(null);
+		game.getP3().setMove(null);
+		game.getP4().setMove(null);
+		sendHealth();
+		int winner = game.checkForWinner();
+		if( winner == 0) {
+			try {
+				conn.sendAll("winner-0");
+			}
+			catch(Exception e) {
+				addToInOutString( "Error failed to send winner.");
+			}
+		}
+		else if( winner == -1) {
+			try {
+				conn.sendAll("nextRound");
+			}
+			catch(Exception e) {
+				addToInOutString( "Error failed to send next round.");
+			}
+		}
+		else {
+			try {
+				conn.sendAll("winner-"+winner);
+			}
+			catch(Exception e) {
+				addToInOutString( "Error failed to send winner.");
+			}
+		}
+	}
+	
+	public void sendTextForMoves( String move) {
+		String[] tokens = move.split("-",-2);
+		switch(tokens[0]) {
+		case "attack":
+			try {
+				conn.sendAll( "text-"+ game.getUsername(tokens[1]) + " attacked " + game.getUsername(tokens[2]));
+			}
+			catch(Exception e) {
+				addToInOutString( "Error failed to send text.");
+			}
+		case "defend":
+			try {
+				conn.sendAll( "text-"+ game.getUsername(tokens[1]) + " is defending." );
+			}
+			catch(Exception e) {
+				addToInOutString( "Error failed to send text.");
+			}
+		case "item":
+			try {
+				conn.sendAll( "text-"+ game.getUsername(tokens[1]) + " used " + game.getItemName( tokens[1]));
+			}
+			catch(Exception e) {
+				addToInOutString( "Error failed to send text.");
+			}
+		default:
+			break;
+		}
+	}
+	
+	public void processDefendMoves() {
+		String[] p1Tokens = game.getP1().getMove().split("-",-2);
+		if( p1Tokens[0] == "defend") {
+			game.getP1().setDefending( true);
+		}
+		String[] p2Tokens = game.getP2().getMove().split("-",-2);
+		if( p2Tokens[0] == "defend") {
+			game.getP2().setDefending( true);
+		}
+		String[] p3Tokens = game.getP3().getMove().split("-",-2);
+		if( p3Tokens[0] == "defend") {
+			game.getP3().setDefending( true);
+		}
+		String[] p4Tokens = game.getP4().getMove().split("-",-2);
+		if( p4Tokens[0] == "defend") {
+			game.getP4().setDefending( true);
+		}
+	}
+	
+	public void processItemMoves() {
+		// player 1 if not bomb
+		String[] p1Tokens = game.getP1().getMove().split("-",-2);
+		if( (p1Tokens[0] == "item") && (p1Tokens[2] != "bomb")) {
+			game.processItem( p1Tokens[1], p1Tokens[2]);
+		}
+		// player 2 if not bomb
+		String[] p2Tokens = game.getP2().getMove().split("-",-2);
+		if( (p2Tokens[0] == "item") && (p2Tokens[2] != "bomb")) {
+			game.processItem( p2Tokens[1], p2Tokens[2]);
+		}
+		// player 3 if not bomb
+		String[] p3Tokens = game.getP3().getMove().split("-",-2);
+		if( (p3Tokens[0] == "item") && (p3Tokens[2] != "bomb")) {
+			game.processItem( p3Tokens[1], p3Tokens[2]);
+		}
+		// player 4 if not bomb
+		String[] p4Tokens = game.getP4().getMove().split("-",-2);
+		if( (p4Tokens[0] == "item") && (p4Tokens[2] != "bomb")) {
+			game.processItem( p4Tokens[1], p4Tokens[2]);
+		}
+		// if it is the bomb
+		if( (p1Tokens[0] == "item") && (p1Tokens[2] == "bomb")) {
+			game.processItem( p1Tokens[1], p1Tokens[2]);
+		}
+		if( (p2Tokens[0] == "item") && (p2Tokens[2] == "bomb")) {
+			game.processItem( p2Tokens[1], p2Tokens[2]);
+		}
+		if( (p3Tokens[0] == "item") && (p3Tokens[2] == "bomb")) {
+			game.processItem( p3Tokens[1], p3Tokens[2]);
+		}
+		if( (p4Tokens[0] == "item") && (p4Tokens[2] == "bomb")) {
+			game.processItem( p4Tokens[1], p4Tokens[2]);
+		}
+		
+	}
+	
+	public void processAttackMoves() {
+		// if player 1 is attacking
+		String[] p1Tokens = game.getP1().getMove().split("-",-2);
+		if( p1Tokens[0] == "attack") {
+			game.processAttack( p1Tokens[1], p1Tokens[2]);
+		}
+		// if player 2 is attacking
+		String[] p2Tokens = game.getP2().getMove().split("-",-2);
+		if( p2Tokens[0] == "attack") {
+			game.processAttack( p2Tokens[1], p2Tokens[2]);
+		}
+		// if player 3 is attacking
+		String[] p3Tokens = game.getP3().getMove().split("-",-2);
+		if( p3Tokens[0] == "attack") {
+			game.processAttack( p3Tokens[1], p3Tokens[2]);
+		}
+		// if player 4 is attacking
+		String[] p4Tokens = game.getP4().getMove().split("-",-2);
+		if( p4Tokens[0] == "attack") {
+			game.processAttack( p4Tokens[1], p4Tokens[2]);
+		}
+	}
+	
+	public void sendHealth() {
+		try {
+			conn.sendAll("health-1-"+game.getP1().getHealth());
+			conn.sendAll("health-2-"+game.getP2().getHealth());
+			conn.sendAll("health-3-"+game.getP3().getHealth());
+			conn.sendAll("health-4-"+game.getP4().getHealth());
+		}
+		catch(Exception e) {
+			addToInOutString( "Error: failed to send updated health.");
+		}
+	}
+	
+	// TODO: implement players quitting by killing them then disconnecting them
 	
 	public void updateClientList() {
 		clientListTA.clear();
-		int i = 0;
-		int size = conn.getConnThread().getArrayCT().size();
-		
-		for( i = 0; i < size; i++) {
-			addToClientList( conn.getConnThread().getArrayCT().get(i).getClientNum() );
+		if( conn.clientExists( "1")) {
+			addToClientList( "1", game.getP1().getUsername());
 		}
+		if( conn.clientExists( "2")) {
+			addToClientList( "2", game.getP2().getUsername());
+		}
+		if( conn.clientExists( "3")) {
+			addToClientList( "3", game.getP3().getUsername());
+		}
+		if( conn.clientExists( "4")) {
+			addToClientList( "4", game.getP4().getUsername());
+		}
+		
 	}
 	
 	

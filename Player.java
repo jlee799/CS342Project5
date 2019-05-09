@@ -17,6 +17,7 @@ public class Player {
 	private int def;
 	
 	private String move;
+	private boolean defending;
 	
 	public Player(){
 		username = null;
@@ -34,6 +35,7 @@ public class Player {
 		def = 0;
 		
 		move = null;
+		defending = false;
 	}
 	
 	public int getHealth() {
@@ -100,7 +102,7 @@ public class Player {
 		legs = leg;
 	}
 	
-	public String getitem() {
+	public String getItem() {
 		return item;
 	}
 	
@@ -124,7 +126,21 @@ public class Player {
 		return def;
 	}
 	
+	public String getMove() {
+		return move;
+	}
 	
+	public void setMove( String moveString) {
+		move = moveString;
+	}
+	
+	public void setDefending( boolean bool) {
+		defending = bool;
+	}
+	
+	public boolean getDefending() {
+		return defending;
+	}
 	
 
 }

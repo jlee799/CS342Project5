@@ -30,7 +30,7 @@ public abstract class NetworkConnection {
 	}
 	
 	// will send the string to the client who has that clientNum. clientNum != index of arrayCT
-	/*
+	
 	public void sendClient( String clientNumTo, String stringToSend) throws Exception{
 		int i = 0;
 		int size = this.connthread.arrayCT.size();
@@ -45,8 +45,21 @@ public abstract class NetworkConnection {
 			}
 		}
 	}
-	*/
 	
+	public boolean clientExists( String id) {
+		int i = 0;
+		int size = this.connthread.arrayCT.size();
+		
+		while( i < size) {
+			if( this.connthread.arrayCT.get(i).clientNum.equals(id) ) {
+				return true;
+			}
+			else {
+				i++;
+			}
+		}
+		return false;
+	}
 	
 	
 	public int getClientThreadSize() {
@@ -238,13 +251,15 @@ public abstract class NetworkConnection {
 		
 		public void run() {
 			
-			ServerSocket ss = null;
-			try {
-			ss = new ServerSocket( getPort());
+			// ServerSocket ss = null;
+			try ( ServerSocket ss = new ServerSocket( getPort()) ){
+			// ss = new ServerSocket( getPort());
+				/*
 			}
 			catch( Exception e) {
 				callback.accept("Connection Closed");
 			}
+			*/
 			
 			while( true) {
 				
@@ -276,7 +291,7 @@ public abstract class NetworkConnection {
 							unusedNums.remove(0);
 						}
 						// send the client their clientID
-						sendClientInd( arrayCT.size() - 1, "0-" + arrayCT.get( arrayCT.size()-1).clientNum );
+						sendClientInd( arrayCT.size() - 1, "id-" + arrayCT.get( arrayCT.size()-1).clientNum );
 						// invoking the start method
 						arrayCT.get( arrayCT.size() - 1 ).start();
 					}
@@ -293,6 +308,10 @@ public abstract class NetworkConnection {
 				}	
 			}
 			
+			}
+			catch( Exception e) {
+				callback.accept("Connection Closed");
+			}
 		}
 		
 		public ArrayList<ClientThread> getArrayCT(){
