@@ -898,6 +898,14 @@ public class ClientProcessing extends Application {
             System.out.println(e.getMessage());
         }
     }
+    
+    public String usernameToID(String name) {
+		for (int i = 0; i < 4; i++) {
+			if (players.get(i).getUsername().equals(name))
+				return players.get(i).getId();
+		}
+		return "";
+	}
 
     public void defend() {
         try {
