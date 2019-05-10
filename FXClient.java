@@ -21,7 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Separator;
 
-public class ClientProcessing extends Application {
+public class FXClient extends Application {
 
     String ipAdd;
     int portNum;
@@ -29,7 +29,7 @@ public class ClientProcessing extends Application {
     int idNumInt;
     private ClientNetworkConnectionRPS conn = null;
     String username;
-    ArrayList<Player> players = new ArrayList<Player>(4);
+    ArrayList<Player> players = new ArrayList<>();
 
     int windowWidth = 960;
     int windowHeight = 700;
@@ -252,13 +252,6 @@ public class ClientProcessing extends Application {
 
         exitButton.setOnAction( event -> {
 		quit();
-		try {
-                	conn.closeConn();
-                	Platform.exit();
-            	}
-            	catch(Exception e) {
-                	System.out.println("Failed to quit properly");
-            	}
         });
     }
 
@@ -733,6 +726,12 @@ public class ClientProcessing extends Application {
         //primaryStage.setScene(itemSelectScene);
         primaryStage.setScene(connectScene);
         primaryStage.show();
+
+        players.add(new Player());
+        players.add(new Player());
+        players.add(new Player());
+        players.add(new Player());
+
     }
 
     private ClientRPS createClient() {
