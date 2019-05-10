@@ -940,6 +940,14 @@ public class FXClient extends Application {
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
+	    
+	try {
+            conn.closeConn();
+            Platform.exit();
+    	}
+    	catch(Exception e) {
+            System.out.println("Failed to quit properly");
+    	}
     }
 
 }
