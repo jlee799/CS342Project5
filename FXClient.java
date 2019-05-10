@@ -942,6 +942,7 @@ public class FXClient extends Application {
         nameText2.setText(players.get(1).getUsername());
         nameText3.setText(players.get(2).getUsername());
         nameText4.setText(players.get(3).getUsername());
+        makePlayerNameBold();
         /* set health texts */
         healthText1.setText("Health: " + players.get(0).getHealth());
         healthText2.setText("Health: " + players.get(0).getHealth());
@@ -964,10 +965,10 @@ public class FXClient extends Application {
         chestImageView2.setImage(chestImage(players.get(1).getChest()));
         chestImageView3.setImage(chestImage(players.get(2).getChest()));
         chestImageView4.setImage(chestImage(players.get(3).getChest()));
-        itemImageView1.setImage(chestImage(players.get(0).getItem()));
-        itemImageView2.setImage(chestImage(players.get(1).getItem()));
-        itemImageView3.setImage(chestImage(players.get(2).getItem()));
-        itemImageView4.setImage(chestImage(players.get(3).getItem()));
+        itemImageView1.setImage(itemImage(players.get(0).getItem()));
+        itemImageView2.setImage(itemImage(players.get(1).getItem()));
+        itemImageView3.setImage(itemImage(players.get(2).getItem()));
+        itemImageView4.setImage(itemImage(players.get(3).getItem()));
         /* show new scene */
         primaryStage.setScene(sceneMap.get("play"));
         primaryStage.show();
@@ -1057,7 +1058,7 @@ public class FXClient extends Application {
     public void attack(String playerToAttack) {
 
         try {
-            conn.send("attack-" + idNumStr + "-" + playerToAttack);
+            conn.send("attack-" + idNumStr + "-" + usernameToID(playerToAttack));
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
@@ -1324,6 +1325,21 @@ public class FXClient extends Application {
             return bombImage;
         }
         return null;
+    }
+
+    public void makePlayerNameBold() {
+        if (idNumInt == 0) {
+            nameText1.setStyle("-fx-font-weight: bold");
+        }
+        else if (idNumInt == 1) {
+            nameText1.setStyle("-fx-font-weight: bold");
+        }
+        else if (idNumInt == 2) {
+            nameText1.setStyle("-fx-font-weight: bold");
+        }
+        else if (idNumInt == 3) {
+            nameText1.setStyle("-fx-font-weight: bold");
+        }
     }
 
 }
