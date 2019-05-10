@@ -179,6 +179,13 @@ public class FXServer extends Application {
 				break;
 			case "picked":
 				game.addChoice(tokens[1], tokens[2], tokens[3]);
+				try {
+					conn.sendAll( data);
+					addToInOutString( "Out to all: "+"data");
+				}
+				catch(Exception e) {
+					addToInOutString( "Error: Failed to send picks to all clients");
+				}
 				if( game.pickingOver() == 20) {
 					try {
 						conn.sendAll("start");
