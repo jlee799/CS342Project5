@@ -135,9 +135,9 @@ public class ClientProcessing {
 	
 	//Sending To Client
 	
-	public void sendUsername() {
-		username = "";
-		//Get username from GUI
+	public void sendUsername(String username) {
+		this.username = username;
+		players.get(idNumInt-1).setUsername(username);
 		try {
 			conn.send("connect-" + idNumStr + "-" + username);
 		}
