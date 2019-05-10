@@ -21,15 +21,15 @@ public class Player {
 	private boolean usedItem;
 	
 	public Player(){
-		username = null;
+		username = "none";
 		id = null;
 		roll = 0;
 		
-		weapon = null;
-		helmet = null;
-		chest = null;
-		shield = null;
-		item = null;
+		weapon = "null";
+		helmet = "null";
+		chest = "null";
+		shield = "null";
+		item = "null";
 		
 		health = 100;
 		atk = 0;
