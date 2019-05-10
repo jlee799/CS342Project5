@@ -30,7 +30,9 @@ public class FXClient extends Application {
     private ClientNetworkConnectionRPS conn = null;
     String username;
     ArrayList<Player> players = new ArrayList<>();
-    ArrayList<Button> availableItems = new ArrayList<>(); // added code
+    ArrayList<Button> availableItems = new ArrayList<>();
+    boolean didUseItem = false;
+    Stage primaryStage;
 
     int windowWidth = 960;
     int windowHeight = 700;
@@ -244,20 +246,30 @@ public class FXClient extends Application {
 
     private void setPlayButtonActions() {
         attackButton.setOnAction( event -> {
-		String playerToAttack = insertPlayerTextField.getText();
+		    String playerToAttack = insertPlayerTextField.getText();
+		    disableMoveButtons();
         });
 
         defendButton.setOnAction( event -> {
-		defend();
+		    defend();
+            disableMoveButtons();
         });
 
         useItemButton.setOnAction( event -> {
-		
+		    useItem(players.get(idNumInt-1).getItem());
+		    didUseItem = true;
+            disableMoveButtons();
         });
 
         exitButton.setOnAction( event -> {
-		quit();
+		    quit();
         });
+    }
+
+    private void disableMoveButtons() {
+        attackButton.setDisable(true);
+        defendButton.setDisable(true);
+        useItemButton.setDisable(true);
     }
 
     private void createConnect( Stage primaryStage) {
@@ -793,6 +805,7 @@ public class FXClient extends Application {
         createItemSelectScene(primaryStage);
         createPlayScene(primaryStage);
         createConnect(primaryStage);
+        this.primaryStage = primaryStage;
 
         /* change this to itemSelectScene */
         //primaryStage.setScene(itemSelectScene);
@@ -915,7 +928,8 @@ public class FXClient extends Application {
 
     public void start() {
         //Enable buttons to make a move
-        
+        primaryStage.setScene(sceneMap.get("play"));
+        primaryStage.show();
     }
 
     public void setAtkStat(String id, String atkStat) {
@@ -938,6 +952,11 @@ public class FXClient extends Application {
 
     public void startNextRound() {
         //Enable buttons to make a move
+        attackButton.setDisable(false);
+        defendButton.setDisable(false);
+        if (didUseItem == false) {
+            useItemButton.setDisable(false);
+        }
     }
 
     public void winner(String winnerID) {
