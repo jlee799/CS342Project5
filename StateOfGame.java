@@ -124,8 +124,8 @@ public class StateOfGame {
 			else if( itemType == "chest") {
 				p1.setChest( level);
 			}
-			else if( itemType == "legs") {
-				p1.setLegs( level);
+			else if( itemType == "shield") {
+				p1.setShield( level);
 			}
 			else{				// usable item
 				p1.setItem( level);	// level here is really item name. hPot, aPot, dPot, bomb
@@ -140,8 +140,8 @@ public class StateOfGame {
 			else if( itemType == "chest") {
 				p2.setChest( level);
 			}
-			else if( itemType == "legs") {
-				p2.setLegs( level);
+			else if( itemType == "shield") {
+				p2.setShield( level);
 			}
 			else{				// usable item
 				p2.setItem( level);	// level here is really item name. hPot, aPot, dPot, bomb
@@ -156,8 +156,8 @@ public class StateOfGame {
 			else if( itemType == "chest") {
 				p3.setChest( level);
 			}
-			else if( itemType == "legs") {
-				p3.setLegs( level);
+			else if( itemType == "shield") {
+				p3.setShield( level);
 			}
 			else{				// usable item
 				p3.setItem( level);	// level here is really item name. hPot, aPot, dPot, bomb
@@ -172,8 +172,8 @@ public class StateOfGame {
 			else if( itemType == "chest") {
 				p4.setChest( level);
 			}
-			else if( itemType == "legs") {
-				p4.setLegs( level);
+			else if( itemType == "shield") {
+				p4.setShield( level);
 			}
 			else{				// usable item
 				p4.setItem( level);	// level here is really item name. hPot, aPot, dPot, bomb
@@ -365,7 +365,7 @@ public class StateOfGame {
 		if( p1.getChest() != null) {
 			itemsPicked++;
 		}
-		if( p1.getLegs() != null) {
+		if( p1.getShield() != null) {
 			itemsPicked++;
 		}
 		if( p1.getItem() != null) {
@@ -381,7 +381,7 @@ public class StateOfGame {
 		if( p2.getChest() != null) {
 			itemsPicked++;
 		}
-		if( p2.getLegs() != null) {
+		if( p2.getShield() != null) {
 			itemsPicked++;
 		}
 		if( p2.getItem() != null) {
@@ -397,7 +397,7 @@ public class StateOfGame {
 		if( p3.getChest() != null) {
 			itemsPicked++;
 		}
-		if( p3.getLegs() != null) {
+		if( p3.getShield() != null) {
 			itemsPicked++;
 		}
 		if( p3.getItem() != null) {
@@ -413,7 +413,7 @@ public class StateOfGame {
 		if( p4.getChest() != null) {
 			itemsPicked++;
 		}
-		if( p4.getLegs() != null) {
+		if( p4.getShield() != null) {
 			itemsPicked++;
 		}
 		if( p4.getItem() != null) {
@@ -429,10 +429,10 @@ public class StateOfGame {
 		p3.setAtk( weaponStr( p3.getWeapon() ));
 		p4.setAtk( weaponStr( p4.getWeapon() ));
 		
-		p1.setDef( calcDef( p1.getHelmet(), p1.getChest(), p1.getLegs() ));
-		p2.setDef( calcDef( p2.getHelmet(), p2.getChest(), p2.getLegs() ));
-		p3.setDef( calcDef( p3.getHelmet(), p3.getChest(), p3.getLegs() ));
-		p4.setDef( calcDef( p4.getHelmet(), p4.getChest(), p4.getLegs() ));
+		p1.setDef( calcDef( p1.getHelmet(), p1.getChest(), p1.getShield() ));
+		p2.setDef( calcDef( p2.getHelmet(), p2.getChest(), p2.getShield() ));
+		p3.setDef( calcDef( p3.getHelmet(), p3.getChest(), p3.getShield() ));
+		p4.setDef( calcDef( p4.getHelmet(), p4.getChest(), p4.getShield() ));
 	}
 	
 	public int weaponStr( String level) {
@@ -480,7 +480,7 @@ public class StateOfGame {
 		}
 	}
 	
-	public int legsDef( String level) {
+	public int shieldDef( String level) {
 		switch( level) {
 		case "1":
 			return 10;
@@ -496,7 +496,7 @@ public class StateOfGame {
 	}
 	
 	public int calcDef( String hLevel, String cLevel, String lLevel) {
-		return helmetDef( hLevel) + chestDef( cLevel) + legsDef( lLevel);
+		return helmetDef( hLevel) + chestDef( cLevel) + shieldDef( lLevel);
 	}
 	
 	public Player getP1() {
