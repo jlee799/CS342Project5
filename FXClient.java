@@ -300,7 +300,8 @@ public class FXClient extends Application {
                 conn.startConn();
                 primaryStage.setScene(sceneMap.get("itemSelect"));
                 primaryStage.show();
-                conn.send("connect");
+                //conn.send("connect");
+                sendUsername(enterNameTextField.getText());
             } catch (Exception e) {
                 System.out.println("Failed to connect");
             }
@@ -755,7 +756,6 @@ public class FXClient extends Application {
 
             case "id":
                 setID(tokens[1]);
-                sendUsername(enterNameTextField.getText());
             case "connected":
                 setUsername(tokens[1],tokens[2]);
             case "roll":
