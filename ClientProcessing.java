@@ -168,9 +168,7 @@ public class ClientProcessing {
 		}
 	}
 	
-	public void attack() {
-		String playerToAttack = "";
-		//Get player to attack here from GUI or as parameter
+	public void attack(String playerToAttack) {
 		
 		try {
 			conn.send("attack-" + idNumStr + "-" + playerToAttack);
@@ -189,9 +187,8 @@ public class ClientProcessing {
 		}
 	}
 	
-	public void useItem() {
-		String itemUsed = "";
-		//Get item here from GUI or as parameter
+	public void useItem(String itemUsed) {
+		//Make sure player isn't able to reuse item
 		
 		try {
 			conn.send("item-" + idNumStr + "-" + itemUsed);
