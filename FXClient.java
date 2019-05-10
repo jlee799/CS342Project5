@@ -252,6 +252,14 @@ public class ClientProcessing extends Application {
 
         exitButton.setOnAction( event -> {
 		quit();
+		try {
+                	conn.send( "5-" + clientNum);
+                	conn.closeConn();
+                	Platform.exit();
+            	}
+            	catch(Exception e) {
+                	System.out.println("Failed to quit properly");
+            	}
         });
     }
 
