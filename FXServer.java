@@ -467,19 +467,19 @@ public class FXServer extends Application {
 	
 	public void processDefendMoves() {
 		String[] p1Tokens = game.getP1().getMove().split("-",-2);
-		if( p1Tokens[0] == "defend") {
+		if( p1Tokens[0].equals("defend")) {
 			game.getP1().setDefending( true);
 		}
 		String[] p2Tokens = game.getP2().getMove().split("-",-2);
-		if( p2Tokens[0] == "defend") {
+		if( p2Tokens[0].equals("defend")) {
 			game.getP2().setDefending( true);
 		}
 		String[] p3Tokens = game.getP3().getMove().split("-",-2);
-		if( p3Tokens[0] == "defend") {
+		if( p3Tokens[0].equals("defend")) {
 			game.getP3().setDefending( true);
 		}
 		String[] p4Tokens = game.getP4().getMove().split("-",-2);
-		if( p4Tokens[0] == "defend") {
+		if( p4Tokens[0].equals("defend")) {
 			game.getP4().setDefending( true);
 		}
 	}
@@ -487,35 +487,35 @@ public class FXServer extends Application {
 	public void processItemMoves() {
 		// player 1 if not bomb
 		String[] p1Tokens = game.getP1().getMove().split("-",-2);
-		if( (p1Tokens[0] == "item") && (p1Tokens[2] != "bomb")) {
+		if( (p1Tokens[0].equals("item")) && (!p1Tokens[2].equals("bomb"))) {
 			game.processItem( p1Tokens[1], p1Tokens[2]);
 		}
 		// player 2 if not bomb
 		String[] p2Tokens = game.getP2().getMove().split("-",-2);
-		if( (p2Tokens[0] == "item") && (p2Tokens[2] != "bomb")) {
+		if( (p2Tokens[0].equals("item")) && (!p2Tokens[2].equals("bomb"))) {
 			game.processItem( p2Tokens[1], p2Tokens[2]);
 		}
 		// player 3 if not bomb
 		String[] p3Tokens = game.getP3().getMove().split("-",-2);
-		if( (p3Tokens[0] == "item") && (p3Tokens[2] != "bomb")) {
+		if( (p3Tokens[0].equals("item")) && (!p3Tokens[2].equals("bomb"))) {
 			game.processItem( p3Tokens[1], p3Tokens[2]);
 		}
 		// player 4 if not bomb
 		String[] p4Tokens = game.getP4().getMove().split("-",-2);
-		if( (p4Tokens[0] == "item") && (p4Tokens[2] != "bomb")) {
+		if( (p4Tokens[0].equals("item")) && (!p4Tokens[2].equals("bomb"))) {
 			game.processItem( p4Tokens[1], p4Tokens[2]);
 		}
 		// if it is the bomb
-		if( (p1Tokens[0] == "item") && (p1Tokens[2] == "bomb")) {
+		if( (p1Tokens[0].equals("item")) && (p1Tokens[2].equals("bomb"))) {
 			game.processItem( p1Tokens[1], p1Tokens[2]);
 		}
-		if( (p2Tokens[0] == "item") && (p2Tokens[2] == "bomb")) {
+		if( (p2Tokens[0].equals("item")) && (p2Tokens[2].equals("bomb"))) {
 			game.processItem( p2Tokens[1], p2Tokens[2]);
 		}
-		if( (p3Tokens[0] == "item") && (p3Tokens[2] == "bomb")) {
+		if( (p3Tokens[0].equals("item")) && (p3Tokens[2].equals("bomb"))) {
 			game.processItem( p3Tokens[1], p3Tokens[2]);
 		}
-		if( (p4Tokens[0] == "item") && (p4Tokens[2] == "bomb")) {
+		if( (p4Tokens[0].equals("item")) && (p4Tokens[2].equals("bomb"))) {
 			game.processItem( p4Tokens[1], p4Tokens[2]);
 		}
 		
@@ -523,23 +523,24 @@ public class FXServer extends Application {
 	
 	public void processAttackMoves() {
 		// if player 1 is attacking
+		System.out.println("Processing attack moves.");
 		String[] p1Tokens = game.getP1().getMove().split("-",-2);
-		if( p1Tokens[0] == "attack") {
+		if( p1Tokens[0].equals("attack")) {
 			game.processAttack( p1Tokens[1], p1Tokens[2]);
 		}
 		// if player 2 is attacking
 		String[] p2Tokens = game.getP2().getMove().split("-",-2);
-		if( p2Tokens[0] == "attack") {
+		if( p2Tokens[0].equals("attack")) {
 			game.processAttack( p2Tokens[1], p2Tokens[2]);
 		}
 		// if player 3 is attacking
 		String[] p3Tokens = game.getP3().getMove().split("-",-2);
-		if( p3Tokens[0] == "attack") {
+		if( p3Tokens[0].equals("attack")) {
 			game.processAttack( p3Tokens[1], p3Tokens[2]);
 		}
 		// if player 4 is attacking
 		String[] p4Tokens = game.getP4().getMove().split("-",-2);
-		if( p4Tokens[0] == "attack") {
+		if( p4Tokens[0].equals("attack")) {
 			game.processAttack( p4Tokens[1], p4Tokens[2]);
 		}
 	}

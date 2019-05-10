@@ -229,10 +229,10 @@ public class StateOfGame {
 		if( (p2.getHealth() > 0) && (p2.getMove() == null) ) {
 			bool = false;
 		}
-		if( (p3.getHealth() > 0) && (p3.getMove() == null) ) {
+		if( (p3.getHealth() > 0) && (p3.getMove() == null) ){
 			bool = false;
 		}
-		if( (p4.getHealth() > 0) && (p4.getMove() == null) ) {
+		if( (p4.getHealth() > 0) && (p4.getMove() == null )) {
 			bool = false;
 		}
 		return bool;
@@ -242,6 +242,7 @@ public class StateOfGame {
 	
 	public void processAttack( String attacker, String attackee) {
 		int atk = 0;
+		System.out.println("Processing attack.");
 		switch( attacker) {
 		case "1":
 			atk = p1.getAtk();
@@ -263,26 +264,32 @@ public class StateOfGame {
 	}
 	
 	public void dealDmg( int atk, String attackee) {
+		System.out.println("Dealing damage.");
 		if( getAttackeeDefending( attackee)) {
-		
+			
 		}
 		else {
 			switch( attackee) {
 			case "1":
-				p1.setHealth( p1.getHealth() - (atk - ((p1.getDef()/ 100)*atk)) );
+				p1.setHealth( (p1.getHealth() - (atk - p1.getDef() ) ) );
+				System.out.println( "P1 new health: "+(p1.getHealth() - (atk - p1.getDef() ) ));
 				break;
 			case "2":
-				p2.setHealth( p2.getHealth() - (atk - ((p2.getDef()/ 100)*atk)) );
+				p2.setHealth(  (p2.getHealth() - (atk - p2.getDef() ) ) );
+				System.out.println( "P2 new health: "+(p1.getHealth() - (atk - p2.getDef() ) ));
 				break;
 			case "3":
-				p3.setHealth( p3.getHealth() - (atk - ((p3.getDef()/ 100)*atk)) );
+				p3.setHealth(  (p3.getHealth() - (atk - p3.getDef() ) ) );
+				System.out.println( "P3 new health: "+(p1.getHealth() - (atk - p3.getDef() ) ));
 				break;
 			case "4":
-				p4.setHealth( p4.getHealth() - (atk - ((p4.getDef()/ 100)*atk)) );
+				p4.setHealth(  (p4.getHealth() - (atk - p4.getDef() ) ) );
+				System.out.println( "P4 new health: "+(p1.getHealth() - (atk - p4.getDef() ) ));
 				break;
 			}
-			resetDefending( attackee);
+			
 		}
+		resetDefending( attackee);
 		
 	}
 	
@@ -323,7 +330,7 @@ public class StateOfGame {
 	public void processItem( String id, String item) {
 		int hRestore = 25;
 		int atkUp = 10;
-		int defUp = 10;
+		int defUp = 3;
 		int bombDmg = 10;
 		switch( id) {
 		case "1":
@@ -481,7 +488,7 @@ public class StateOfGame {
 	public int weaponStr( String level) {
 		switch( level) {
 		case "1":
-			return 20;
+			return 23;
 		case "2":
 			return 25;
 		case "3":
@@ -489,52 +496,52 @@ public class StateOfGame {
 		case "4":
 			return 30;
 		default:
-			return 20;
+			return 23;
 		}
 	}
 	
 	public int helmetDef( String level) {
 		switch( level) {
 		case "1":
-			return 5;
+			return 2;
 		case "2":
-			return 7;
+			return 3;
 		case "3":
-			return 9;
+			return 4;
 		case "4":
-			return 12;
-		default:
 			return 5;
+		default:
+			return 2;
 		}
 	}
 	
 	public int chestDef( String level) {
 		switch( level) {
 		case "1":
-			return 10;
+			return 3;
 		case "2":
-			return 13;
+			return 4;
 		case "3":
-			return 17;
+			return 5;
 		case "4":
-			return 20;
+			return 6;
 		default:
-			return 10;
+			return 3;
 		}
 	}
 	
 	public int shieldDef( String level) {
 		switch( level) {
 		case "1":
-			return 10;
+			return 3;
 		case "2":
-			return 13;
+			return 4;
 		case "3":
-			return 17;
+			return 5;
 		case "4":
-			return 20;
+			return 6;
 		default:
-			return 10;
+			return 3;
 		}
 	}
 	
