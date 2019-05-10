@@ -304,17 +304,23 @@ public class FXClient extends Application {
 		    String playerToAttack = insertPlayerTextField.getText();
 		    attack(playerToAttack);
 		    disableMoveButtons();
+            playMessageString = "";
+            playMessageText.setText(playMessageString);
         });
 
         defendButton.setOnAction( event -> {
 		    defend();
             disableMoveButtons();
+            playMessageString = "";
+            playMessageText.setText(playMessageString);
         });
 
         useItemButton.setOnAction( event -> {
 		    useItem(players.get(idNumInt-1).getItem());
 		    didUseItem = true;
             disableMoveButtons();
+            playMessageString = "";
+            playMessageText.setText(playMessageString);
         });
 
         exitButton.setOnAction( event -> {
@@ -1065,8 +1071,6 @@ public class FXClient extends Application {
         if (didUseItem == false) {
             useItemButton.setDisable(false);
         }
-        playMessageString = "";
-        playMessageText.setText(playMessageString);
     }
 
     public void winner(String winnerID) {
