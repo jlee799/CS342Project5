@@ -302,7 +302,6 @@ public class FXClient extends Application {
                 primaryStage.setScene(sceneMap.get("itemSelect"));
                 primaryStage.show();
                 //conn.send("connect");
-                sendUsername(enterNameTextField.getText());
             } catch (Exception e) {
                 System.out.println("Failed to connect");
             }
@@ -822,28 +821,41 @@ public class FXClient extends Application {
 
             case "id":
                 setID(tokens[1]);
+                sendUsername(enterNameTextField.getText());
+                break;
             case "connected":
                 setUsername(tokens[1],tokens[2]);
+                break;
             case "roll":
                 setRoll(tokens[1], tokens[2]);
+                break;
             case "choose":
-		choose();
+		        choose();
+                break;
             case "picked":
                 setPick(tokens[1], tokens[2], tokens[3]);
+                break;
             case "start":
                 start();
+                break;
             case "atkStat":
                 setAtkStat(tokens[1],tokens[2]);
+                break;
             case "defStat":
                 setDefStat(tokens[1],tokens[2]);
+                break;
             case "health":
                 updateHealth(tokens[1], tokens[2]);
+                break;
             case "nextRound":
                 startNextRound();
+                break;
             case "winner":
                 winner(tokens[1]);
+                break;
             case "text":
                 receiveMessage(tokens[1]);
+                break;
         }
 
     }
