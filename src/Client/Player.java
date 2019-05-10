@@ -1,5 +1,3 @@
-package Client;
-
 public class Player {
 	
 	private String username;
@@ -9,7 +7,7 @@ public class Player {
 	private String weapon;
 	private String helmet;
 	private String chest;
-	private String legs;
+	private String shield;
 	private String item;
 	
 	private int health;
@@ -18,7 +16,6 @@ public class Player {
 	
 	private String move;
 	private boolean defending;
-	private boolean usedItem;
 	
 	public Player(){
 		username = null;
@@ -28,7 +25,7 @@ public class Player {
 		weapon = null;
 		helmet = null;
 		chest = null;
-		legs = null;
+		shield = null;
 		item = null;
 		
 		health = 100;
@@ -95,20 +92,20 @@ public class Player {
 		chest = ches;
 	}
 	
-	public String getLegs() {
-		return legs;
+	public String getShield() {
+		return shield;
 	}
 	
-	public void setLegs( String leg) {
-		legs = leg;
+	public void setShield( String shield) {
+		this.shield = shield;
 	}
 	
 	public String getItem() {
 		return item;
 	}
 	
-	public void setItem( String leg) {
-		legs = leg;
+	public void setItem( String item) {
+		this.item = item;
 	}
 	
 	public void setAtk( int attack) {
