@@ -163,6 +163,33 @@ public class FXClient extends Application {
     ImageView itemImageView3 = new ImageView();
     ImageView itemImageView4 = new ImageView();
 
+    /* stat texts */
+
+    Text swordText1 = new Text();
+    Text swordText2 = new Text();
+    Text swordText3 = new Text();
+    Text swordText4 = new Text();
+
+    Text shieldText1 = new Text();
+    Text shieldText2 = new Text();
+    Text shieldText3 = new Text();
+    Text shieldText4 = new Text();
+
+    Text helmetText1 = new Text();
+    Text helmetText2 = new Text();
+    Text helmetText3 = new Text();
+    Text helmetText4 = new Text();
+
+    Text chestText1 = new Text();
+    Text chestText2 = new Text();
+    Text chestText3 = new Text();
+    Text chestText4 = new Text();
+
+    Text itemText1 = new Text();
+    Text itemText2 = new Text();
+    Text itemText3 = new Text();
+    Text itemText4 = new Text();
+
     Text playerText = new Text("Player: ");
     TextField insertPlayerTextField = new TextField();
 
@@ -647,11 +674,11 @@ public class FXClient extends Application {
         player1Info.setAlignment(Pos.CENTER);
         Separator player1VerticalSeparator1 = new Separator(Orientation.VERTICAL);
         // Change text number to reflect stats
-        HBox player1Sword = new HBox(20, swordImageView1, new Text("(1)"));
-        HBox player1Shield = new HBox(20, shieldImageView1, new Text("(2)"));
-        HBox player1Helmet = new HBox(20, helmetImageView1, new Text("(3)"));
-        HBox player1Chest = new HBox(20, chestImageView1, new Text("(4)"));
-        HBox player1Item = new HBox(20, itemImageView1, new Text("(Gloves)"));
+        HBox player1Sword = new HBox(20, swordImageView1, swordText1);
+        HBox player1Shield = new HBox(20, shieldImageView1, shieldText1);
+        HBox player1Helmet = new HBox(20, helmetImageView1, helmetText1);
+        HBox player1Chest = new HBox(20, chestImageView1, chestText1);
+        HBox player1Item = new HBox(20, itemImageView1, itemText1);
         HBox player1Stats = new HBox(20, player1Sword, player1Shield, player1Helmet, player1Chest, player1Item);
         player1Stats.setAlignment(Pos.CENTER);
         Separator player1VerticalSeparator2 = new Separator(Orientation.VERTICAL);
@@ -669,11 +696,11 @@ public class FXClient extends Application {
         player2Info.setAlignment(Pos.CENTER);
         Separator player2VerticalSeparator1 = new Separator(Orientation.VERTICAL);
         // Change text number to reflect stats
-        HBox player2Sword = new HBox(20, swordImageView2, new Text("(1)"));
-        HBox player2Shield = new HBox(20, shieldImageView2, new Text("(2)"));
-        HBox player2Helmet = new HBox(20, helmetImageView2, new Text("(3)"));
-        HBox player2Chest = new HBox(20, chestImageView2, new Text("(4)"));
-        HBox player2Item = new HBox(20, itemImageView2, new Text("(Gloves)"));
+        HBox player2Sword = new HBox(20, swordImageView2, swordText2);
+        HBox player2Shield = new HBox(20, shieldImageView2, shieldText2);
+        HBox player2Helmet = new HBox(20, helmetImageView2, helmetText2);
+        HBox player2Chest = new HBox(20, chestImageView2, chestText2);
+        HBox player2Item = new HBox(20, itemImageView2, itemText2);
         HBox player2Stats = new HBox(20, player2Sword, player2Shield, player2Helmet, player2Chest, player2Item);
         player2Stats.setAlignment(Pos.CENTER);
         Separator player2VerticalSeparator2 = new Separator(Orientation.VERTICAL);
@@ -690,11 +717,11 @@ public class FXClient extends Application {
         player3Info.setAlignment(Pos.CENTER);
         Separator player3VerticalSeparator1 = new Separator(Orientation.VERTICAL);
         // Change text number to reflect stats
-        HBox player3Sword = new HBox(20, swordImageView3, new Text("(1)"));
-        HBox player3Shield = new HBox(20, shieldImageView3, new Text("(2)"));
-        HBox player3Helmet = new HBox(20, helmetImageView3, new Text("(3)"));
-        HBox player3Chest = new HBox(20, chestImageView3, new Text("(4)"));
-        HBox player3Item = new HBox(20, itemImageView3, new Text("(Gloves)"));
+        HBox player3Sword = new HBox(20, swordImageView3, swordText3);
+        HBox player3Shield = new HBox(20, shieldImageView3, shieldText3);
+        HBox player3Helmet = new HBox(20, helmetImageView3, helmetText3);
+        HBox player3Chest = new HBox(20, chestImageView3, chestText3);
+        HBox player3Item = new HBox(20, itemImageView3, itemText3);
         HBox player3Stats = new HBox(20, player3Sword, player3Shield, player3Helmet, player3Chest, player3Item);
         player3Stats.setAlignment(Pos.CENTER);
         Separator player3VerticalSeparator2 = new Separator(Orientation.VERTICAL);
@@ -711,11 +738,11 @@ public class FXClient extends Application {
         player4Info.setAlignment(Pos.CENTER);
         Separator player4VerticalSeparator1 = new Separator(Orientation.VERTICAL);
         // Change text number to reflect stats
-        HBox player4Sword = new HBox(20, swordImageView4, new Text("(1)"));
-        HBox player4Shield = new HBox(20, shieldImageView4, new Text("(2)"));
-        HBox player4Helmet = new HBox(20, helmetImageView4, new Text("(3)"));
-        HBox player4Chest = new HBox(20, chestImageView4, new Text("(4)"));
-        HBox player4Item = new HBox(20, itemImageView4, new Text("(Gloves)"));
+        HBox player4Sword = new HBox(20, swordImageView4, swordText4);
+        HBox player4Shield = new HBox(20, shieldImageView4, shieldText4);
+        HBox player4Helmet = new HBox(20, helmetImageView4, helmetText4);
+        HBox player4Chest = new HBox(20, chestImageView4, chestText4);
+        HBox player4Item = new HBox(20, itemImageView4, itemText4);
         HBox player4Stats = new HBox(20, player4Sword, player4Shield, player4Helmet, player4Chest, player4Item);
         player4Stats.setAlignment(Pos.CENTER);
         Separator player4VerticalSeparator2 = new Separator(Orientation.VERTICAL);
@@ -824,6 +851,11 @@ public class FXClient extends Application {
         players.add(new Player());
         players.add(new Player());
         players.add(new Player());
+
+        players.get(0).setId("1");
+        players.get(1).setId("2");
+        players.get(2).setId("3");
+        players.get(3).setId("4");
 
     }
 
@@ -969,6 +1001,27 @@ public class FXClient extends Application {
         itemImageView2.setImage(itemImage(players.get(1).getItem()));
         itemImageView3.setImage(itemImage(players.get(2).getItem()));
         itemImageView4.setImage(itemImage(players.get(3).getItem()));
+        /* set correct stat texts */
+        swordText1.setText(players.get(0).getWeapon());
+        swordText2.setText(players.get(1).getWeapon());
+        swordText3.setText(players.get(2).getWeapon());
+        swordText4.setText(players.get(3).getWeapon());
+        shieldText1.setText(players.get(0).getShield());
+        shieldText2.setText(players.get(1).getShield());
+        shieldText3.setText(players.get(2).getShield());
+        shieldText4.setText(players.get(3).getShield());
+        helmetText1.setText(players.get(0).getHelmet());
+        helmetText2.setText(players.get(1).getHelmet());
+        helmetText3.setText(players.get(2).getHelmet());
+        helmetText4.setText(players.get(3).getHelmet());
+        chestText1.setText(players.get(0).getChest());
+        chestText2.setText(players.get(1).getChest());
+        chestText3.setText(players.get(2).getChest());
+        chestText4.setText(players.get(3).getChest());
+        itemText1.setText(players.get(0).getItem());
+        itemText2.setText(players.get(1).getItem());
+        itemText3.setText(players.get(2).getItem());
+        itemText4.setText(players.get(3).getItem());
         /* show new scene */
         primaryStage.setScene(sceneMap.get("play"));
         primaryStage.show();
@@ -1329,16 +1382,16 @@ public class FXClient extends Application {
 
     public void makePlayerNameBold() {
         if (idNumInt == 0) {
-            nameText1.setStyle("-fx-font-weight: bold");
+            nameText1.setText(nameText1.getText().concat(" (You)"));
         }
         else if (idNumInt == 1) {
-            nameText1.setStyle("-fx-font-weight: bold");
+            nameText2.setText(nameText2.getText().concat(" (You)"));
         }
         else if (idNumInt == 2) {
-            nameText1.setStyle("-fx-font-weight: bold");
+            nameText3.setText(nameText3.getText().concat(" (You)"));
         }
         else if (idNumInt == 3) {
-            nameText1.setStyle("-fx-font-weight: bold");
+            nameText4.setText(nameText4.getText().concat(" (You)"));
         }
     }
 
