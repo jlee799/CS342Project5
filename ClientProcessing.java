@@ -197,4 +197,13 @@ public class ClientProcessing {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void quit() {
+		try {
+			conn.send("quit-"+ idNumStr);
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
