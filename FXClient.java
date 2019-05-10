@@ -341,19 +341,19 @@ public class FXClient extends Application {
         swordImageView2.setFitHeight(75);
         swordImageView2.setPreserveRatio(true);
         silverSwordButton.setGraphic(swordImageView2);
-        HBox swordImageView2HBox = new HBox(20, silverSwordButton, new Text("(1)"));
+        HBox swordImageView2HBox = new HBox(20, silverSwordButton, new Text("(2)"));
 
         ImageView swordImageView3 = new ImageView(goldSwordImage);
         swordImageView3.setFitHeight(75);
         swordImageView3.setPreserveRatio(true);
         goldSwordButton.setGraphic(swordImageView3);
-        HBox swordImageView3HBox = new HBox(20, goldSwordButton, new Text("(1)"));
+        HBox swordImageView3HBox = new HBox(20, goldSwordButton, new Text("(3)"));
 
         ImageView swordImageView4 = new ImageView(diamondSwordImage);
         swordImageView4.setFitHeight(75);
         swordImageView4.setPreserveRatio(true);
         diamondSwordButton.setGraphic(swordImageView4);
-        HBox swordImageView4HBox = new HBox(20, diamondSwordButton, new Text("(1)"));
+        HBox swordImageView4HBox = new HBox(20, diamondSwordButton, new Text("(4)"));
 
         /* create shield image views */
 
@@ -367,19 +367,19 @@ public class FXClient extends Application {
         shieldImageView2.setFitHeight(75);
         shieldImageView2.setPreserveRatio(true);
         silverShieldButton.setGraphic(shieldImageView2);
-        HBox shieldImageView2HBox = new HBox(20, silverShieldButton, new Text("(1)"));
+        HBox shieldImageView2HBox = new HBox(20, silverShieldButton, new Text("(2)"));
 
         ImageView shieldImageView3 = new ImageView(goldShieldImage);
         shieldImageView3.setFitHeight(75);
         shieldImageView3.setPreserveRatio(true);
         goldShieldButton.setGraphic(shieldImageView3);
-        HBox shieldImageView3HBox = new HBox(20, goldShieldButton, new Text("(1)"));
+        HBox shieldImageView3HBox = new HBox(20, goldShieldButton, new Text("(3)"));
 
         ImageView shieldImageView4 = new ImageView(diamondShieldImage);
         shieldImageView4.setFitHeight(75);
         shieldImageView4.setPreserveRatio(true);
         diamondShieldButton.setGraphic(shieldImageView4);
-        HBox shieldImageView4HBox = new HBox(20, diamondShieldButton, new Text("(1)"));
+        HBox shieldImageView4HBox = new HBox(20, diamondShieldButton, new Text("(4)"));
 
         /* create helmet image views */
 
@@ -393,19 +393,19 @@ public class FXClient extends Application {
         helmetImageView2.setFitHeight(75);
         helmetImageView2.setPreserveRatio(true);
         silverHelmetButton.setGraphic(helmetImageView2);
-        HBox helmetImageView2HBox = new HBox(20, silverHelmetButton, new Text("(1)"));
+        HBox helmetImageView2HBox = new HBox(20, silverHelmetButton, new Text("(2)"));
 
         ImageView helmetImageView3 = new ImageView(goldHelmetImage);
         helmetImageView3.setFitHeight(75);
         helmetImageView3.setPreserveRatio(true);
         goldHelmetButton.setGraphic(helmetImageView3);
-        HBox helmetImageView3HBox = new HBox(20, goldHelmetButton, new Text("(1)"));
+        HBox helmetImageView3HBox = new HBox(20, goldHelmetButton, new Text("(3)"));
 
         ImageView helmetImageView4 = new ImageView(diamondHelmetImage);
         helmetImageView4.setFitHeight(75);
         helmetImageView4.setPreserveRatio(true);
         diamondHelmetButton.setGraphic(helmetImageView4);
-        HBox helmetImageView4HBox = new HBox(20, diamondHelmetButton, new Text("(1)"));
+        HBox helmetImageView4HBox = new HBox(20, diamondHelmetButton, new Text("(4)"));
 
         /* create chest image views */
 
@@ -419,19 +419,19 @@ public class FXClient extends Application {
         chestImageView2.setFitHeight(75);
         chestImageView2.setPreserveRatio(true);
         silverChestButton.setGraphic(chestImageView2);
-        HBox chestImageView2HBox = new HBox(20, silverChestButton, new Text("(1)"));
+        HBox chestImageView2HBox = new HBox(20, silverChestButton, new Text("(2)"));
 
         ImageView chestImageView3 = new ImageView(goldChestImage);
         chestImageView3.setFitHeight(75);
         chestImageView3.setPreserveRatio(true);
         goldChestButton.setGraphic(chestImageView3);
-        HBox chestImageView3HBox = new HBox(20, goldChestButton, new Text("(1)"));
+        HBox chestImageView3HBox = new HBox(20, goldChestButton, new Text("(3)"));
 
         ImageView chestImageView4 = new ImageView(diamondChestImage);
         chestImageView4.setFitHeight(75);
         chestImageView4.setPreserveRatio(true);
         diamondChestButton.setGraphic(chestImageView4);
-        HBox chestImageView4HBox = new HBox(20, diamondChestButton, new Text("(1)"));
+        HBox chestImageView4HBox = new HBox(20, diamondChestButton, new Text("(4)"));
 
         /* create item image views */
 
@@ -439,25 +439,25 @@ public class FXClient extends Application {
         itemImageView1.setFitHeight(75);
         itemImageView1.setPreserveRatio(true);
         healthPotButton.setGraphic(itemImageView1);
-        HBox itemImageView1HBox = new HBox(20, healthPotButton, new Text("(1)"));
+        HBox itemImageView1HBox = new HBox(20, healthPotButton, new Text("(+health)"));
 
         ImageView itemImageView2 = new ImageView(attackPotImage);
         itemImageView2.setFitHeight(75);
         itemImageView2.setPreserveRatio(true);
         attackPotButton.setGraphic(itemImageView2);
-        HBox itemImageView2HBox = new HBox(20, attackPotButton, new Text("(1)"));
+        HBox itemImageView2HBox = new HBox(20, attackPotButton, new Text("(+attack)"));
 
         ImageView itemImageView3 = new ImageView(defensePotImage);
         itemImageView3.setFitHeight(75);
         itemImageView3.setPreserveRatio(true);
         defensePotButton.setGraphic(itemImageView3);
-        HBox itemImageView3HBox = new HBox(20, defensePotButton, new Text("(1)"));
+        HBox itemImageView3HBox = new HBox(20, defensePotButton, new Text("(+defense)"));
 
         ImageView itemImageView4 = new ImageView(bombImage);
         itemImageView4.setFitHeight(75);
         itemImageView4.setPreserveRatio(true);
         bombButton.setGraphic(itemImageView4);
-        HBox itemImageView4HBox = new HBox(20, bombButton, new Text("(1)"));
+        HBox itemImageView4HBox = new HBox(20, bombButton, new Text("(bomb)"));
 
         VBox swords = new VBox(20, swordImageView1HBox, swordImageView2HBox, swordImageView3HBox, swordImageView4HBox);
         VBox shields = new VBox(20, shieldImageView1HBox, shieldImageView2HBox, shieldImageView3HBox, shieldImageView4HBox);
@@ -915,6 +915,7 @@ public class FXClient extends Application {
 
     public void start() {
         //Enable buttons to make a move
+        
     }
 
     public void setAtkStat(String id, String atkStat) {
@@ -989,6 +990,7 @@ public class FXClient extends Application {
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
+        removeTypeFromAvailable(pickType);
         disableAllButtons();
     }
 
@@ -1117,6 +1119,39 @@ public class FXClient extends Application {
             else if (rarity.equals("bomb")) {
                 availableItems.remove(bombButton);
             }
+        }
+    }
+
+    public void removeTypeFromAvailable(String type) {
+        if (type.equals("sword")) {
+            availableItems.remove(bronzeSwordButton);
+            availableItems.remove(silverSwordButton);
+            availableItems.remove(goldSwordButton);
+            availableItems.remove(diamondSwordButton);
+        }
+        else if (type.equals("shield")) {
+            availableItems.remove(bronzeShieldButton);
+            availableItems.remove(silverShieldButton);
+            availableItems.remove(goldShieldButton);
+            availableItems.remove(diamondShieldButton);
+        }
+        else if (type.equals("helmet")) {
+            availableItems.remove(bronzeHelmetButton);
+            availableItems.remove(silverHelmetButton);
+            availableItems.remove(goldHelmetButton);
+            availableItems.remove(diamondHelmetButton);
+        }
+        else if (type.equals("chest")) {
+            availableItems.remove(bronzeChestButton);
+            availableItems.remove(silverChestButton);
+            availableItems.remove(goldChestButton);
+            availableItems.remove(diamondChestButton);
+        }
+        else if (type.equals("item")) {
+            availableItems.remove(healthPotButton);
+            availableItems.remove(attackPotButton);
+            availableItems.remove(defensePotButton);
+            availableItems.remove(bombButton);
         }
     }
 
