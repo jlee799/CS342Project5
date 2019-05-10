@@ -518,32 +518,7 @@ public class FXClient extends Application {
         availableItems.add(defensePotButton);
         availableItems.add(bombButton);
 
-        /* disabling buttons by default */
-
-        bronzeSwordButton.setDisable(true);
-        silverSwordButton.setDisable(true);
-        goldSwordButton.setDisable(true);
-        diamondSwordButton.setDisable(true);
-
-        bronzeShieldButton.setDisable(true);
-        silverShieldButton.setDisable(true);
-        goldShieldButton.setDisable(true);
-        diamondShieldButton.setDisable(true);
-
-        bronzeHelmetButton.setDisable(true);
-        silverHelmetButton.setDisable(true);
-        goldHelmetButton.setDisable(true);
-        diamondHelmetButton.setDisable(true);
-
-        bronzeChestButton.setDisable(true);
-        silverChestButton.setDisable(true);
-        goldChestButton.setDisable(true);
-        diamondChestButton.setDisable(true);
-
-        healthPotButton.setDisable(true);
-        attackPotButton.setDisable(true);
-        defensePotButton.setDisable(true);
-        bombButton.setDisable(true);
+        disableAllButtons();
 
         setItemSelectButtonActions();
 
@@ -917,7 +892,7 @@ public class FXClient extends Application {
     public void setPick(String id, String pickType, String pick) {
         int idInt = Integer.parseInt(id);
 
-        disableButton(pickType, pick);
+        removeFromAvailableItems(pickType, pick);
 
         switch(pickType) {
             case "sword":
@@ -1009,14 +984,12 @@ public class FXClient extends Application {
     public void pickItem(String pickType, String pick) {
         setPick(idNumStr, pickType, pick);
         try {
-            conn.send("pick-" + idNumStr + "-" + pickType + "-" + pick);
+            conn.send("picked-" + idNumStr + "-" + pickType + "-" + pick);
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
-        for (Button button : availableItems) {
-            button.setDisable(true);
-        }
+        disableAllButtons();
     }
 
     public void attack(String playerToAttack) {
@@ -1074,7 +1047,7 @@ public class FXClient extends Application {
     	}
     }
 
-    public void disableButton(String type, String rarity) {
+    public void removeFromAvailableItems(String type, String rarity) {
         if (type.equals("sword")) {
             if (rarity.equals("1")) {
                 availableItems.remove(bronzeSwordButton);
@@ -1145,6 +1118,37 @@ public class FXClient extends Application {
                 availableItems.remove(bombButton);
             }
         }
+    }
+
+    public void disableAllButtons() {
+
+        /* disabling buttons by default */
+
+        bronzeSwordButton.setDisable(true);
+        silverSwordButton.setDisable(true);
+        goldSwordButton.setDisable(true);
+        diamondSwordButton.setDisable(true);
+
+        bronzeShieldButton.setDisable(true);
+        silverShieldButton.setDisable(true);
+        goldShieldButton.setDisable(true);
+        diamondShieldButton.setDisable(true);
+
+        bronzeHelmetButton.setDisable(true);
+        silverHelmetButton.setDisable(true);
+        goldHelmetButton.setDisable(true);
+        diamondHelmetButton.setDisable(true);
+
+        bronzeChestButton.setDisable(true);
+        silverChestButton.setDisable(true);
+        goldChestButton.setDisable(true);
+        diamondChestButton.setDisable(true);
+
+        healthPotButton.setDisable(true);
+        attackPotButton.setDisable(true);
+        defensePotButton.setDisable(true);
+        bombButton.setDisable(true);
+
     }
 
 }
