@@ -7,6 +7,7 @@ public class StateOfGame {
 	private Player p3;
 	private Player p4;
 	private String currPlayer;
+	private int itemsPickedAlready;
 	
 	public StateOfGame() {
 		
@@ -19,6 +20,7 @@ public class StateOfGame {
 		p2.setId("2");
 		p3.setId("3");
 		p4.setId("4");
+		itemsPickedAlready = 0;
 	}
 	
 	/*
@@ -121,19 +123,26 @@ public class StateOfGame {
 		}
 	}
 	
+	public void printItemSets() {
+		System.out.println( "P1: "+p1.getWeapon()+", "+p1.getHelmet()+", "+p1.getChest()+", "+p1.getShield()+", "+p1.getItem());
+		System.out.println( "P2: "+p2.getWeapon()+", "+p2.getHelmet()+", "+p2.getChest()+", "+p2.getShield()+", "+p2.getItem());
+		System.out.println( "P3: "+p3.getWeapon()+", "+p3.getHelmet()+", "+p3.getChest()+", "+p3.getShield()+", "+p3.getItem());
+		System.out.println( "P4: "+p4.getWeapon()+", "+p4.getHelmet()+", "+p4.getChest()+", "+p4.getShield()+", "+p4.getItem());
+	}
+	
 	public void addChoice( String id, String itemType, String level) {
 		switch( id) {
 		case "1":
-			if( itemType == "sword") {
+			if( itemType.equals("sword")) {
 				p1.setWeapon( level);
 			}
-			else if( itemType == "helmet") {
+			else if( itemType.equals("helmet")) {
 				p1.setHelmet( level);
 			}
-			else if( itemType == "chest") {
+			else if( itemType.equals("chest")) {
 				p1.setChest( level);
 			}
-			else if( itemType == "shield") {
+			else if( itemType.equals("shield")) {
 				p1.setShield( level);
 			}
 			else{				// usable item
@@ -141,16 +150,16 @@ public class StateOfGame {
 			}
 			break;
 		case "2":
-			if( itemType == "sword") {
+			if( itemType.equals("sword")) {
 				p2.setWeapon( level);
 			}
-			else if( itemType == "helmet") {
+			else if( itemType.equals("helmet")) {
 				p2.setHelmet( level);
 			}
-			else if( itemType == "chest") {
+			else if( itemType.equals("chest")) {
 				p2.setChest( level);
 			}
-			else if( itemType == "shield") {
+			else if( itemType.equals("shield")) {
 				p2.setShield( level);
 			}
 			else{				// usable item
@@ -158,16 +167,16 @@ public class StateOfGame {
 			}
 			break;
 		case "3":
-			if( itemType == "sword") {
+			if( itemType.equals("sword")) {
 				p3.setWeapon( level);
 			}
-			else if( itemType == "helmet") {
+			else if( itemType.equals("helmet")) {
 				p3.setHelmet( level);
 			}
-			else if( itemType == "chest") {
+			else if( itemType.equals("chest")) {
 				p3.setChest( level);
 			}
-			else if( itemType == "shield") {
+			else if( itemType.equals("shield")) {
 				p3.setShield( level);
 			}
 			else{				// usable item
@@ -175,16 +184,16 @@ public class StateOfGame {
 			}
 			break;
 		case "4":
-			if( itemType == "sword") {
+			if( itemType.equals("sword")) {
 				p4.setWeapon( level);
 			}
-			else if( itemType == "helmet") {
+			else if( itemType.equals("helmet")) {
 				p4.setHelmet( level);
 			}
-			else if( itemType == "chest") {
+			else if( itemType.equals("chest")) {
 				p4.setChest( level);
 			}
-			else if( itemType == "shield") {
+			else if( itemType.equals("shield")) {
 				p4.setShield( level);
 			}
 			else{				// usable item
@@ -318,13 +327,13 @@ public class StateOfGame {
 		int bombDmg = 10;
 		switch( id) {
 		case "1":
-			if( item == "hPot") {
+			if( item.equals("hPot")) {
 				p1.setHealth( p1.getHealth() + hRestore);
 			}
-			else if( item == "aPot") {
+			else if( item.equals("aPot")) {
 				p1.setAtk( p1.getAtk() + atkUp);
 			}
-			else if( item == "dPot") {
+			else if( item.equals("dPot")) {
 				p1.setDef( p1.getDef() + defUp);
 			}
 			else {			// if item is bomb, deals flat damage ignoring armor
@@ -334,13 +343,13 @@ public class StateOfGame {
 			}
 			break;
 		case "2":
-			if( item == "hPot") {
+			if( item.equals("hPot")) {
 				p2.setHealth( p2.getHealth() + hRestore);
 			}
-			else if( item == "aPot") {
+			else if( item.equals("aPot")) {
 				p2.setAtk( p2.getAtk() + atkUp);
 			}
-			else if( item == "dPot") {
+			else if( item.equals("dPot")) {
 				p2.setDef( p2.getDef() + defUp);
 			}
 			else {			// if item is bomb, deals flat damage ignoring armor
@@ -350,13 +359,13 @@ public class StateOfGame {
 			}
 			break;
 		case "3":
-			if( item == "hPot") {
+			if( item.equals("hPot")) {
 				p3.setHealth( p3.getHealth() + hRestore);
 			}
-			else if( item == "aPot") {
+			else if( item.equals("aPot")) {
 				p3.setAtk( p3.getAtk() + atkUp);
 			}
-			else if( item == "dPot") {
+			else if( item.equals("dPot")) {
 				p3.setDef( p3.getDef() + defUp);
 			}
 			else {			// if item is bomb, deals flat damage ignoring armor
@@ -366,13 +375,13 @@ public class StateOfGame {
 			}
 			break;
 		case "4":
-			if( item == "hPot") {
+			if( item.equals("hPot")) {
 				p4.setHealth( p4.getHealth() + hRestore);
 			}
-			else if( item == "aPot") {
+			else if( item.equals("aPot")) {
 				p4.setAtk( p4.getAtk() + atkUp);
 			}
-			else if( item == "dPot") {
+			else if( item.equals("dPot")) {
 				p4.setDef( p4.getDef() + defUp);
 			}
 			else {			// if item is bomb, deals flat damage ignoring armor
@@ -452,6 +461,7 @@ public class StateOfGame {
 		if( p4.getItem() != null) {
 			itemsPicked++;
 		}
+		System.out.println( "Items picked: "+itemsPicked);
 		return itemsPicked;
 		
 	}
@@ -574,52 +584,52 @@ public class StateOfGame {
 	public String getItemName( String id) {
 		switch( id) {
 		case "1":
-			if( p1.getItem() == "hPot") {
+			if( p1.getItem().equals("hPot")) {
 				return " health potion.";
 			}
-			else if( p1.getItem() == "aPot") {
+			else if( p1.getItem().equals("aPot")) {
 				return " attack potion.";
 			}
-			else if( p1.getItem() == "dPot") {
+			else if( p1.getItem().equals("dPot")) {
 				return " defense potion.";
 			}
 			else {
 				return " bomb.";
 			}
 		case "2":
-			if( p2.getItem() == "hPot") {
+			if( p2.getItem().equals("hPot")) {
 				return " health potion.";
 			}
-			else if( p2.getItem() == "aPot") {
+			else if( p2.getItem().equals("aPot")) {
 				return " attack potion.";
 			}
-			else if( p2.getItem() == "dPot") {
+			else if( p2.getItem().equals("dPot")) {
 				return " defense potion.";
 			}
 			else {
 				return " bomb.";
 			}
 		case "3":
-			if( p3.getItem() == "hPot") {
+			if( p3.getItem().equals("hPot")) {
 				return " health potion.";
 			}
-			else if( p3.getItem() == "aPot") {
+			else if( p3.getItem().equals("aPot")) {
 				return " attack potion.";
 			}
-			else if( p3.getItem() == "dPot") {
+			else if( p3.getItem().equals("dPot")) {
 				return " defense potion.";
 			}
 			else {
 				return " bomb.";
 			}
 		case "4":
-			if( p4.getItem() == "hPot") {
+			if( p4.getItem().equals("hPot")) {
 				return " health potion.";
 			}
-			else if( p4.getItem() == "aPot") {
+			else if( p4.getItem().equals("aPot")) {
 				return " attack potion.";
 			}
-			else if( p4.getItem() == "dPot") {
+			else if( p4.getItem().equals("dPot")) {
 				return " defense potion.";
 			}
 			else {
@@ -664,6 +674,14 @@ public class StateOfGame {
 				return 4;
 			}
 		}
+	}
+	
+	public void setItemsPickedAlready( int num) {
+		itemsPickedAlready = num;
+	}
+	
+	public int getItemsPickedAlready() {
+		return itemsPickedAlready;
 	}
 
 }

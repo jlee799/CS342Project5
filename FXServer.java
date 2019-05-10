@@ -179,14 +179,15 @@ public class FXServer extends Application {
 				break;
 			case "picked":
 				game.addChoice(tokens[1], tokens[2], tokens[3]);
+				game.setItemsPickedAlready( game.getItemsPickedAlready() + 1);
 				try {
 					conn.sendAll( data);
-					addToInOutString( "Out to all: "+"data");
+					addToInOutString( "Out to all: "+ data);
 				}
 				catch(Exception e) {
 					addToInOutString( "Error: Failed to send picks to all clients");
 				}
-				if( game.pickingOver() == 20) {
+				if( game.getItemsPickedAlready() == 20) {
 					try {
 						conn.sendAll("start");
 						addToInOutString( "Out: "+"start");
@@ -194,8 +195,16 @@ public class FXServer extends Application {
 					catch(Exception e) {
 						addToInOutString( "Error: failed to send all players start message.");
 					}
+					//game.printItemSets();
 					game.calcStats();
 					sendStats();
+					try {
+						conn.sendAll("nextRound");
+					}
+					catch(Exception e) {
+						addToInOutString( "Error: failed to send all players to make a move.");
+					}
+					addToInOutString( "Out to all: "+"nextRound");
 				}
 				else {
 					game.setCurrPlayer( game.nextPlayer( game.getCurrPlayer()));
