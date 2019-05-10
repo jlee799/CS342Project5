@@ -239,19 +239,19 @@ public class ClientProcessing extends Application {
 
     private void setPlayButtonActions() {
         attackButton.setOnAction( event -> {
-
+		String playerToAttack = insertPlayerTextField.getText();
         });
 
         defendButton.setOnAction( event -> {
-
+		defend();
         });
 
         useItemButton.setOnAction( event -> {
-
+		
         });
 
         exitButton.setOnAction( event -> {
-
+		quit();
         });
     }
 
