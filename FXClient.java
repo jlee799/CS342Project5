@@ -1076,10 +1076,24 @@ public class FXClient extends Application {
     public void winner(String winnerID) {
         if(winnerID.equals("0")) {
             //No winner - everyone died
+            playMessageString = "No winner";
         }
         else {
             //Display winner
+            if (winnerID.equals("1")) {
+                playMessageString = players.get(0).getUsername() + "won.";
+            }
+            else if (winnerID.equals("2")) {
+                playMessageString = players.get(1).getUsername() + "won.";
+            }
+            else if (winnerID.equals("3")) {
+                playMessageString = players.get(2).getUsername() + "won.";
+            }
+            else if (winnerID.equals("4")) {
+                playMessageString = players.get(3).getUsername() + "won.";
+            }
         }
+        playMessageText.setText(playMessageString);
     }
 
     public void receiveMessage(String message) {
