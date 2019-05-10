@@ -147,7 +147,7 @@ public class FXServer extends Application {
 	private Server createServer() {
 		return new Server( portNumInt, data-> { 
 			Platform.runLater(()->{
-				
+				System.out.println( data);
 				processInput( data.toString());
 				
 				
@@ -163,6 +163,7 @@ public class FXServer extends Application {
 		switch( tokens[0]) {
 			case "connect":
 				connectUser( tokens[1], tokens[2]);
+				break;
 			case "roll":
 				game.addRoll( tokens[1], tokens[2]);
 				if( game.everyoneRolled()) {
@@ -175,6 +176,7 @@ public class FXServer extends Application {
 						addToInOutString( "Error: failed to send message to have player choose.");
 					}
 				}
+				break;
 			case "picked":
 				game.addChoice(tokens[1], tokens[2], tokens[3]);
 				if( game.pickingOver() == 20) {
@@ -198,21 +200,25 @@ public class FXServer extends Application {
 						addToInOutString( "Error: failed to send message to have next player choose.");
 					}
 				}
+				break;
 			case "attack":
 				game.addMoveToPlayer( tokens[1], data);
 				if( game.allAliveMadeMove() ) {
 					processMoves();
 				}
+				break;
 			case "defend":
 				game.addMoveToPlayer( tokens[1], data);
 				if( game.allAliveMadeMove() ) {
 					processMoves();
 				}
+				break;
 			case "item":
 				game.addMoveToPlayer( tokens[1], data);
 				if( game.allAliveMadeMove() ) {
 					processMoves();
 				}
+				break;
 			case "quit":
 				if( tokens[1] == "1") {
 					game.getP1().setHealth(0);
@@ -235,6 +241,7 @@ public class FXServer extends Application {
 				if( game.allAliveMadeMove() ) {
 					processMoves();
 				}
+				break;
 		}
 	}
 	
@@ -245,6 +252,7 @@ public class FXServer extends Application {
 			case "1":
 				game.setUsername( id, username);
 				addToClientList( id, username);
+				break;
 			case "2":
 				try {
 					conn.sendClient( id, "connected-1-"+ game.getP2().getUsername());
@@ -260,6 +268,7 @@ public class FXServer extends Application {
 				catch( Exception e) {
 					addToInOutString( "Error failed to send already connected clients.");
 				}
+				break;
 			case "3":
 				try {
 					conn.sendClient( id, "connected-1-"+ game.getP1().getUsername());
@@ -282,6 +291,7 @@ public class FXServer extends Application {
 				catch( Exception e) {
 					addToInOutString( "Error failed to send already connected clients.");
 				}
+				break;
 			case "4":
 				try {
 					conn.sendClient( id, "connected-1-"+ game.getP1().getUsername());
@@ -310,6 +320,7 @@ public class FXServer extends Application {
 				catch( Exception e) {
 					addToInOutString( "Error failed to send already connected clients.");
 				}
+				break;
 		}
 	}
 	
@@ -413,6 +424,7 @@ public class FXServer extends Application {
 			catch(Exception e) {
 				addToInOutString( "Error failed to send text.");
 			}
+			break;
 		case "defend":
 			try {
 				conn.sendAll( "text-"+ game.getUsername(tokens[1]) + " is defending." );
@@ -421,6 +433,7 @@ public class FXServer extends Application {
 			catch(Exception e) {
 				addToInOutString( "Error failed to send text.");
 			}
+			break;
 		case "item":
 			try {
 				conn.sendAll( "text-"+ game.getUsername(tokens[1]) + " used " + game.getItemName( tokens[1]));
@@ -429,6 +442,7 @@ public class FXServer extends Application {
 			catch(Exception e) {
 				addToInOutString( "Error failed to send text.");
 			}
+			break;
 		default:
 			break;
 		}

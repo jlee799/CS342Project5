@@ -78,14 +78,19 @@ public class StateOfGame {
 		switch( id) {
 			case "1":
 				p1.setUsername( username);
+				break;
 			case "2":
 				p2.setUsername( username);
+				break;
 			case "3":
 				p3.setUsername( username);
+				break;
 			case "4":
 				p4.setUsername( username);
+				break;
 			default:
 				System.out.println( "Error: Id does not exist");
+				break;
 		}
 	}
 	
@@ -93,12 +98,16 @@ public class StateOfGame {
 		switch( id) {
 			case "1":
 				p1.setRoll(Integer.parseInt(roll));
+				break;
 			case "2":
 				p2.setRoll(Integer.parseInt(roll));
+				break;
 			case "3":
 				p3.setRoll(Integer.parseInt(roll));
+				break;
 			case "4":
 				p4.setRoll(Integer.parseInt(roll));
+				break;
 		}
 	}
 	
@@ -130,6 +139,7 @@ public class StateOfGame {
 			else{				// usable item
 				p1.setItem( level);	// level here is really item name. hPot, aPot, dPot, bomb
 			}
+			break;
 		case "2":
 			if( itemType == "sword") {
 				p2.setWeapon( level);
@@ -146,6 +156,7 @@ public class StateOfGame {
 			else{				// usable item
 				p2.setItem( level);	// level here is really item name. hPot, aPot, dPot, bomb
 			}
+			break;
 		case "3":
 			if( itemType == "sword") {
 				p3.setWeapon( level);
@@ -162,6 +173,7 @@ public class StateOfGame {
 			else{				// usable item
 				p3.setItem( level);	// level here is really item name. hPot, aPot, dPot, bomb
 			}
+			break;
 		case "4":
 			if( itemType == "sword") {
 				p4.setWeapon( level);
@@ -178,6 +190,7 @@ public class StateOfGame {
 			else{				// usable item
 				p4.setItem( level);	// level here is really item name. hPot, aPot, dPot, bomb
 			}
+			break;
 		}
 	}
 	
@@ -185,12 +198,16 @@ public class StateOfGame {
 		switch( id) {
 		case "1":
 			p1.setMove( move);
+			break;
 		case "2":
 			p2.setMove( move);
+			break;
 		case "3":
 			p3.setMove( move);
+			break;
 		case "4":
 			p4.setMove( move);
+			break;
 		}
 	}
 	
@@ -220,15 +237,19 @@ public class StateOfGame {
 		case "1":
 			atk = p1.getAtk();
 			dealDmg( atk, attackee);
+			break;
 		case "2":
 			atk = p2.getAtk();
 			dealDmg( atk, attackee);
+			break;
 		case "3":
 			atk = p3.getAtk();
 			dealDmg( atk, attackee);
+			break;
 		case "4":
 			atk = p4.getAtk();
 			dealDmg( atk, attackee);
+			break;
 		}
 	}
 	
@@ -240,12 +261,16 @@ public class StateOfGame {
 			switch( attackee) {
 			case "1":
 				p1.setHealth( p1.getHealth() - (atk - ((p1.getDef()/ 100)*atk)) );
+				break;
 			case "2":
 				p2.setHealth( p2.getHealth() - (atk - ((p2.getDef()/ 100)*atk)) );
+				break;
 			case "3":
 				p3.setHealth( p3.getHealth() - (atk - ((p3.getDef()/ 100)*atk)) );
+				break;
 			case "4":
 				p4.setHealth( p4.getHealth() - (atk - ((p4.getDef()/ 100)*atk)) );
+				break;
 			}
 			resetDefending( attackee);
 		}
@@ -271,12 +296,16 @@ public class StateOfGame {
 		switch( id) {
 		case "1":
 			p1.setDefending( false);
+			break;
 		case "2":
 			p2.setDefending( false);
+			break;
 		case "3":
 			p3.setDefending( false);
+			break;
 		case "4":
 			p4.setDefending( false);
+			break;
 
 		}
 	}
@@ -303,6 +332,7 @@ public class StateOfGame {
 				p3.setHealth( p3.getHealth() - bombDmg);
 				p4.setHealth( p4.getHealth() - bombDmg);
 			}
+			break;
 		case "2":
 			if( item == "hPot") {
 				p2.setHealth( p2.getHealth() + hRestore);
@@ -318,6 +348,7 @@ public class StateOfGame {
 				p3.setHealth( p3.getHealth() - bombDmg);
 				p4.setHealth( p4.getHealth() - bombDmg);
 			}
+			break;
 		case "3":
 			if( item == "hPot") {
 				p3.setHealth( p3.getHealth() + hRestore);
@@ -333,6 +364,7 @@ public class StateOfGame {
 				p2.setHealth( p2.getHealth() - bombDmg);
 				p4.setHealth( p4.getHealth() - bombDmg);
 			}
+			break;
 		case "4":
 			if( item == "hPot") {
 				p4.setHealth( p4.getHealth() + hRestore);
@@ -348,6 +380,7 @@ public class StateOfGame {
 				p2.setHealth( p2.getHealth() - bombDmg);
 				p3.setHealth( p3.getHealth() - bombDmg);
 			}
+			break;
 		default:
 			break;
 			
