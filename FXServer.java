@@ -252,7 +252,7 @@ public class FXServer extends Application {
 						conn.sendClient( id, "roll-1-"+game.getP1().getRoll());
 					}
 					conn.sendAll( "connected-"+id+"-"+username);
-					addToInOutString( "Out: "+"connected-"+id+"-"+username);
+					addToInOutString( "Out to all: "+"connected-"+id+"-"+username);
 					game.setUsername( id, username);
 					addToClientList( id, username);
 				}
@@ -276,7 +276,7 @@ public class FXServer extends Application {
 					game.setUsername( id, username);
 					addToClientList( id, username);
 					conn.sendAll( "connected-"+id+"-"+username);
-					addToInOutString( "Out: "+"connected-"+id+"-"+username);
+					addToInOutString( "Out to all: "+"connected-"+id+"-"+username);
 				}
 				catch( Exception e) {
 					addToInOutString( "Error failed to send already connected clients.");
@@ -304,7 +304,7 @@ public class FXServer extends Application {
 					game.setUsername( id, username);
 					addToClientList( id, username);
 					conn.sendAll( "connected-"+id+"-"+username);
-					addToInOutString( "Out: "+"connected-"+id+"-"+username);
+					addToInOutString( "Out to all: "+"connected-"+id+"-"+username);
 				}
 				catch( Exception e) {
 					addToInOutString( "Error failed to send already connected clients.");
@@ -327,22 +327,22 @@ public class FXServer extends Application {
 		try {
 			// sending atk stat of each player to everyone after calculation
 			conn.sendAll( "atkStat-1-"+ game.getP1().getAtk() );
-			addToInOutString( "Out: "+"atkStat-1-"+ game.getP1().getAtk());
+			addToInOutString( "Out to all: "+"atkStat-1-"+ game.getP1().getAtk());
 			conn.sendAll( "atkStat-2-"+ game.getP2().getAtk() );
-			addToInOutString( "Out: "+"atkStat-2-"+ game.getP2().getAtk());
+			addToInOutString( "Out to all: "+"atkStat-2-"+ game.getP2().getAtk());
 			conn.sendAll( "atkStat-3-"+ game.getP3().getAtk() );
-			addToInOutString( "Out: "+"atkStat-3-"+ game.getP3().getAtk());
+			addToInOutString( "Out to all: "+"atkStat-3-"+ game.getP3().getAtk());
 			conn.sendAll( "atkStat-4-"+ game.getP4().getAtk() );
-			addToInOutString( "Out: "+"atkStat-4-"+ game.getP4().getAtk());
+			addToInOutString( "Out to all: "+"atkStat-4-"+ game.getP4().getAtk());
 			// sending def stat of each player to everyone after calculation
 			conn.sendAll( "defStat-1-"+ game.getP1().getDef() );
-			addToInOutString( "Out: "+"defStat-1-"+ game.getP1().getDef());
+			addToInOutString( "Out to all: "+"defStat-1-"+ game.getP1().getDef());
 			conn.sendAll( "defStat-2-"+ game.getP2().getDef() );
-			addToInOutString( "Out: "+"defStat-2-"+ game.getP2().getDef());
+			addToInOutString( "Out to all: "+"defStat-2-"+ game.getP2().getDef());
 			conn.sendAll( "defStat-3-"+ game.getP3().getDef() );
-			addToInOutString( "Out: "+"defStat-3-"+ game.getP3().getDef());
+			addToInOutString( "Out to all: "+"defStat-3-"+ game.getP3().getDef());
 			conn.sendAll( "defStat-4-"+ game.getP4().getDef() );
-			addToInOutString( "Out: "+"defStat-4-"+ game.getP4().getDef());
+			addToInOutString( "Out to all: "+"defStat-4-"+ game.getP4().getDef());
 		}
 		catch(Exception e) {
 			addToInOutString( "Error failed to send stats to clients.");
@@ -374,7 +374,7 @@ public class FXServer extends Application {
 		if( winner == 0) {
 			try {
 				conn.sendAll("winner-0");
-				addToInOutString( "Out: "+"winner-0");
+				addToInOutString( "Out to all: "+"winner-0");
 			}
 			catch(Exception e) {
 				addToInOutString( "Error failed to send winner.");
@@ -383,7 +383,7 @@ public class FXServer extends Application {
 		else if( winner == -1) {
 			try {
 				conn.sendAll("nextRound");
-				addToInOutString( "Out: "+"nextRound");
+				addToInOutString( "Out to all: "+"nextRound");
 			}
 			catch(Exception e) {
 				addToInOutString( "Error failed to send next round.");
@@ -392,7 +392,7 @@ public class FXServer extends Application {
 		else {
 			try {
 				conn.sendAll("winner-"+winner);
-				addToInOutString( "Out: "+"winner-"+winner);
+				addToInOutString( "Out to all: "+"winner-"+winner);
 			}
 			catch(Exception e) {
 				addToInOutString( "Error failed to send winner.");
@@ -406,7 +406,7 @@ public class FXServer extends Application {
 		case "attack":
 			try {
 				conn.sendAll( "text-"+ game.getUsername(tokens[1]) + " attacked " + game.getUsername(tokens[2]));
-				addToInOutString( "Out: "+"text-"+ game.getUsername(tokens[1]) + " attacked " + game.getUsername(tokens[2]));
+				addToInOutString( "Out to all: "+"text-"+ game.getUsername(tokens[1]) + " attacked " + game.getUsername(tokens[2]));
 			}
 			catch(Exception e) {
 				addToInOutString( "Error failed to send text.");
@@ -414,7 +414,7 @@ public class FXServer extends Application {
 		case "defend":
 			try {
 				conn.sendAll( "text-"+ game.getUsername(tokens[1]) + " is defending." );
-				addToInOutString( "Out: "+"text-"+ game.getUsername(tokens[1]) + " is defending.");
+				addToInOutString( "Out to all: "+"text-"+ game.getUsername(tokens[1]) + " is defending.");
 			}
 			catch(Exception e) {
 				addToInOutString( "Error failed to send text.");
@@ -422,7 +422,7 @@ public class FXServer extends Application {
 		case "item":
 			try {
 				conn.sendAll( "text-"+ game.getUsername(tokens[1]) + " used " + game.getItemName( tokens[1]));
-				addToInOutString( "Out: "+"text-"+ game.getUsername(tokens[1]) + " used " + game.getItemName( tokens[1]));
+				addToInOutString( "Out to all: "+"text-"+ game.getUsername(tokens[1]) + " used " + game.getItemName( tokens[1]));
 			}
 			catch(Exception e) {
 				addToInOutString( "Error failed to send text.");
@@ -514,13 +514,13 @@ public class FXServer extends Application {
 	public void sendHealth() {
 		try {
 			conn.sendAll("health-1-"+game.getP1().getHealth());
-			addToInOutString( "Out: "+"health-1-"+game.getP1().getHealth());
+			addToInOutString( "Out to all: "+"health-1-"+game.getP1().getHealth());
 			conn.sendAll("health-2-"+game.getP2().getHealth());
-			addToInOutString( "Out: "+"health-2-"+game.getP2().getHealth());
+			addToInOutString( "Out to all: "+"health-2-"+game.getP2().getHealth());
 			conn.sendAll("health-3-"+game.getP3().getHealth());
-			addToInOutString( "Out: "+"health-3-"+game.getP3().getHealth());
+			addToInOutString( "Out to all: "+"health-3-"+game.getP3().getHealth());
 			conn.sendAll("health-4-"+game.getP4().getHealth());
-			addToInOutString( "Out: "+"health-4-"+game.getP4().getHealth());
+			addToInOutString( "Out to all: "+"health-4-"+game.getP4().getHealth());
 		}
 		catch(Exception e) {
 			addToInOutString( "Error: failed to send updated health.");
