@@ -197,7 +197,8 @@ public class FXClient extends Application {
     Button defendButton;
     Button useItemButton;
 
-    Text playMessageText = new Text("Test Message");
+    String playMessageString = "";
+    Text playMessageText = new Text("");
 
     Button exitButton;
 
@@ -684,7 +685,7 @@ public class FXClient extends Application {
         Separator player1VerticalSeparator2 = new Separator(Orientation.VERTICAL);
         HBox player1Ready = new HBox(20, readyText1);
         player1Ready.setAlignment(Pos.CENTER);
-        HBox player1 = new HBox(20, player1Info, player1VerticalSeparator1, player1Stats, player1VerticalSeparator2, player1Ready);
+        HBox player1 = new HBox(20, player1Info, player1VerticalSeparator1, player1Stats/*, player1VerticalSeparator2, player1Ready*/);
         player1.setPadding(new Insets(20, 0, 0, 0));
         player1.setAlignment(Pos.CENTER);
 
@@ -706,7 +707,7 @@ public class FXClient extends Application {
         Separator player2VerticalSeparator2 = new Separator(Orientation.VERTICAL);
         HBox player2Ready = new HBox(20, readyText2);
         player2Ready.setAlignment(Pos.CENTER);
-        HBox player2 = new HBox(20, player2Info, player2VerticalSeparator1, player2Stats, player2VerticalSeparator2, player2Ready);
+        HBox player2 = new HBox(20, player2Info, player2VerticalSeparator1, player2Stats/*, player2VerticalSeparator2, player2Ready*/);
         player2.setAlignment(Pos.CENTER);
 
         Separator horizontalSeparator2 = new Separator(Orientation.HORIZONTAL);
@@ -727,7 +728,7 @@ public class FXClient extends Application {
         Separator player3VerticalSeparator2 = new Separator(Orientation.VERTICAL);
         HBox player3Ready = new HBox(20, readyText3);
         player3Ready.setAlignment(Pos.CENTER);
-        HBox player3 = new HBox(20, player3Info, player3VerticalSeparator1, player3Stats, player3VerticalSeparator2, player3Ready);
+        HBox player3 = new HBox(20, player3Info, player3VerticalSeparator1, player3Stats/*, player3VerticalSeparator2, player3Ready*/);
         player3.setAlignment(Pos.CENTER);
 
         Separator horizontalSeparator3 = new Separator(Orientation.HORIZONTAL);
@@ -748,7 +749,7 @@ public class FXClient extends Application {
         Separator player4VerticalSeparator2 = new Separator(Orientation.VERTICAL);
         HBox player4Ready = new HBox(20, readyText4);
         player4Ready.setAlignment(Pos.CENTER);
-        HBox player4 = new HBox(20, player4Info, player4VerticalSeparator1, player4Stats, player4VerticalSeparator2, player4Ready);
+        HBox player4 = new HBox(20, player4Info, player4VerticalSeparator1, player4Stats/*, player4VerticalSeparator2, player4Ready*/);
         player4.setAlignment(Pos.CENTER);
 
         Separator horizontalSeparator4 = new Separator(Orientation.HORIZONTAL);
@@ -1052,6 +1053,7 @@ public class FXClient extends Application {
         if (didUseItem == false) {
             useItemButton.setDisable(false);
         }
+        playMessageText.setText(playMessageString);
     }
 
     public void winner(String winnerID) {
@@ -1064,7 +1066,7 @@ public class FXClient extends Application {
     }
 
     public void receiveMessage(String message) {
-
+        playMessageString =  playMessageString + message + "\n";
     }
 
 
