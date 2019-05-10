@@ -247,6 +247,7 @@ public class FXClient extends Application {
     private void setPlayButtonActions() {
         attackButton.setOnAction( event -> {
 		    String playerToAttack = insertPlayerTextField.getText();
+		    attack(playerToAttack);
 		    disableMoveButtons();
         });
 
@@ -928,6 +929,18 @@ public class FXClient extends Application {
 
     public void start() {
         //Enable buttons to make a move
+
+        /* set username texts */
+        nameText1.setText(players.get(0).getUsername());
+        nameText2.setText(players.get(1).getUsername());
+        nameText3.setText(players.get(2).getUsername());
+        nameText4.setText(players.get(3).getUsername());
+        /* set health texts */
+        healthText1.setText("Health: " + players.get(0).getHealth());
+        healthText2.setText("Health: " + players.get(0).getHealth());
+        healthText3.setText("Health: " + players.get(0).getHealth());
+        healthText4.setText("Health: " + players.get(0).getHealth());
+        /* show new scene */
         primaryStage.setScene(sceneMap.get("play"));
         primaryStage.show();
     }
