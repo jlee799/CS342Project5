@@ -136,6 +136,33 @@ public class FXClient extends Application {
     Image[] chestImageArray;
     Image[] itemImageArray;*/
 
+    /* imageViews */
+
+    ImageView swordImageView1 = new ImageView();
+    ImageView swordImageView2 = new ImageView();
+    ImageView swordImageView3 = new ImageView();
+    ImageView swordImageView4 = new ImageView();
+
+    ImageView shieldImageView1 = new ImageView();
+    ImageView shieldImageView2 = new ImageView();
+    ImageView shieldImageView3 = new ImageView();
+    ImageView shieldImageView4 = new ImageView();
+
+    ImageView helmetImageView1 = new ImageView();
+    ImageView helmetImageView2 = new ImageView();
+    ImageView helmetImageView3 = new ImageView();
+    ImageView helmetImageView4 = new ImageView();
+
+    ImageView chestImageView1 = new ImageView();
+    ImageView chestImageView2 = new ImageView();
+    ImageView chestImageView3 = new ImageView();
+    ImageView chestImageView4 = new ImageView();
+
+    ImageView itemImageView1 = new ImageView();
+    ImageView itemImageView2 = new ImageView();
+    ImageView itemImageView3 = new ImageView();
+    ImageView itemImageView4 = new ImageView();
+
     Text playerText = new Text("Player: ");
     TextField insertPlayerTextField = new TextField();
 
@@ -544,91 +571,71 @@ public class FXClient extends Application {
 
         /* create sword image views */
 
-        ImageView swordImageView1 = new ImageView(swordImage(players.get(0).getWeapon()));
         swordImageView1.setFitHeight(75);
         swordImageView1.setPreserveRatio(true);
 
-        ImageView swordImageView2 = new ImageView(swordImage(players.get(1).getWeapon()));
         swordImageView2.setFitHeight(75);
         swordImageView2.setPreserveRatio(true);
 
-        ImageView swordImageView3 = new ImageView(swordImage(players.get(2).getWeapon()));
         swordImageView3.setFitHeight(75);
         swordImageView3.setPreserveRatio(true);
 
-        ImageView swordImageView4 = new ImageView(swordImage(players.get(3).getWeapon()));
         swordImageView4.setFitHeight(75);
         swordImageView4.setPreserveRatio(true);
 
         /* create shield image views */
 
-        ImageView shieldImageView1 = new ImageView(shieldImage(players.get(0).getShield()));
         shieldImageView1.setFitHeight(75);
         shieldImageView1.setPreserveRatio(true);
 
-        ImageView shieldImageView2 = new ImageView(shieldImage(players.get(1).getShield()));
         shieldImageView2.setFitHeight(75);
         shieldImageView2.setPreserveRatio(true);
 
-        ImageView shieldImageView3 = new ImageView(shieldImage(players.get(2).getShield()));
         shieldImageView3.setFitHeight(75);
         shieldImageView3.setPreserveRatio(true);
 
-        ImageView shieldImageView4 = new ImageView(shieldImage(players.get(3).getShield()));
         shieldImageView4.setFitHeight(75);
         shieldImageView4.setPreserveRatio(true);
 
         /* create helmet image views */
 
-        ImageView helmetImageView1 = new ImageView(helmetImage(players.get(0).getHelmet()));
         helmetImageView1.setFitHeight(75);
         helmetImageView1.setPreserveRatio(true);
 
-        ImageView helmetImageView2 = new ImageView(helmetImage(players.get(1).getHelmet()));
         helmetImageView2.setFitHeight(75);
         helmetImageView2.setPreserveRatio(true);
 
-        ImageView helmetImageView3 = new ImageView(helmetImage(players.get(2).getHelmet()));
         helmetImageView3.setFitHeight(75);
         helmetImageView3.setPreserveRatio(true);
 
-        ImageView helmetImageView4 = new ImageView(helmetImage(players.get(3).getHelmet()));
         helmetImageView4.setFitHeight(75);
         helmetImageView4.setPreserveRatio(true);
 
         /* create chest image views */
 
-        ImageView chestImageView1 = new ImageView(chestImage(players.get(0).getChest()));
         chestImageView1.setFitHeight(75);
         chestImageView1.setPreserveRatio(true);
 
-        ImageView chestImageView2 = new ImageView(chestImage(players.get(1).getChest()));
         chestImageView2.setFitHeight(75);
         chestImageView2.setPreserveRatio(true);
 
-        ImageView chestImageView3 = new ImageView(chestImage(players.get(2).getChest()));
         chestImageView3.setFitHeight(75);
         chestImageView3.setPreserveRatio(true);
 
-        ImageView chestImageView4 = new ImageView(chestImage(players.get(3).getChest()));
         chestImageView4.setFitHeight(75);
         chestImageView4.setPreserveRatio(true);
 
         /* create item image views */
 
-        ImageView itemImageView1 = new ImageView(itemImage(players.get(0).getItem()));
         itemImageView1.setFitHeight(75);
         itemImageView1.setPreserveRatio(true);
 
-        ImageView itemImageView2 = new ImageView(itemImage(players.get(1).getItem()));
         itemImageView2.setFitHeight(75);
         itemImageView2.setPreserveRatio(true);
 
-        ImageView itemImageView3 = new ImageView(itemImage(players.get(2).getItem()));
         itemImageView3.setFitHeight(75);
         itemImageView3.setPreserveRatio(true);
 
-        ImageView itemImageView4 = new ImageView(itemImage(players.get(3).getItem()));
         itemImageView4.setFitHeight(75);
         itemImageView4.setPreserveRatio(true);
 
@@ -940,6 +947,27 @@ public class FXClient extends Application {
         healthText2.setText("Health: " + players.get(0).getHealth());
         healthText3.setText("Health: " + players.get(0).getHealth());
         healthText4.setText("Health: " + players.get(0).getHealth());
+        /* set correct images */
+        swordImageView1.setImage(swordImage(players.get(0).getWeapon()));
+        swordImageView2.setImage(swordImage(players.get(1).getWeapon()));
+        swordImageView3.setImage(swordImage(players.get(2).getWeapon()));
+        swordImageView4.setImage(swordImage(players.get(3).getWeapon()));
+        shieldImageView1.setImage(shieldImage(players.get(0).getShield()));
+        shieldImageView2.setImage(shieldImage(players.get(1).getShield()));
+        shieldImageView3.setImage(shieldImage(players.get(2).getShield()));
+        shieldImageView4.setImage(shieldImage(players.get(3).getShield()));
+        helmetImageView1.setImage(helmetImage(players.get(0).getHelmet()));
+        helmetImageView2.setImage(helmetImage(players.get(1).getHelmet()));
+        helmetImageView3.setImage(helmetImage(players.get(2).getHelmet()));
+        helmetImageView4.setImage(helmetImage(players.get(3).getHelmet()));
+        chestImageView1.setImage(chestImage(players.get(0).getChest()));
+        chestImageView2.setImage(chestImage(players.get(1).getChest()));
+        chestImageView3.setImage(chestImage(players.get(2).getChest()));
+        chestImageView4.setImage(chestImage(players.get(3).getChest()));
+        itemImageView1.setImage(chestImage(players.get(0).getItem()));
+        itemImageView2.setImage(chestImage(players.get(1).getItem()));
+        itemImageView3.setImage(chestImage(players.get(2).getItem()));
+        itemImageView4.setImage(chestImage(players.get(3).getItem()));
         /* show new scene */
         primaryStage.setScene(sceneMap.get("play"));
         primaryStage.show();
