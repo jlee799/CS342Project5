@@ -878,11 +878,15 @@ public class FXClient extends Application {
 
     public void choose() {
         //enable buttons for items still available
-
+        for (Button button : availableItems) {
+            button.setDisable(false);
+        }
     }
 
     public void setPick(String id, String pickType, String pick) {
         int idInt = Integer.parseInt(id);
+
+        disableButton(pickType, pick);
 
         switch(pickType) {
             case "sword":
@@ -972,6 +976,9 @@ public class FXClient extends Application {
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
+        for (Button button : availableItems) {
+            button.setDisable(true);
+        }
     }
 
     public void attack(String playerToAttack) {
@@ -1027,6 +1034,79 @@ public class FXClient extends Application {
     	catch(Exception e) {
             System.out.println("Failed to quit properly");
     	}
+    }
+
+    public void disableButton(String type, String rarity) {
+        if (type.equals("sword")) {
+            if (rarity.equals("1")) {
+                availableItems.remove(bronzeSwordButton);
+            }
+            else if (rarity.equals("2")) {
+                availableItems.remove(silverSwordButton);
+            }
+            else if (rarity.equals("3")) {
+                availableItems.remove(goldSwordButton);
+            }
+            else if (rarity.equals("4")) {
+                availableItems.remove(diamondSwordButton);
+            }
+        }
+        else if (type.equals("shield")) {
+            if (rarity.equals("1")) {
+                availableItems.remove(bronzeShieldButton);
+            }
+            else if (rarity.equals("2")) {
+                availableItems.remove(silverShieldButton);
+            }
+            else if (rarity.equals("3")) {
+                availableItems.remove(goldShieldButton);
+            }
+            else if (rarity.equals("4")) {
+                availableItems.remove(diamondShieldButton);
+            }
+        }
+        else if (type.equals("helmet")) {
+            if (rarity.equals("1")) {
+                availableItems.remove(bronzeHelmetButton);
+            }
+            else if (rarity.equals("2")) {
+                availableItems.remove(silverHelmetButton);
+            }
+            else if (rarity.equals("3")) {
+                availableItems.remove(goldHelmetButton);
+            }
+            else if (rarity.equals("4")) {
+                availableItems.remove(diamondHelmetButton);
+            }
+        }
+        else if (type.equals("chest")) {
+            if (rarity.equals("1")) {
+                availableItems.remove(bronzeChestButton);
+            }
+            else if (rarity.equals("2")) {
+                availableItems.remove(silverChestButton);
+            }
+            else if (rarity.equals("3")) {
+                availableItems.remove(goldChestButton);
+            }
+            else if (rarity.equals("4")) {
+                availableItems.remove(diamondChestButton);
+            }
+        }
+        else if (type.equals("item")) {
+            if (rarity.equals("hPot")) {
+                availableItems.remove(healthPotButton);
+            }
+            else if (rarity.equals("aPot")) {
+                availableItems.remove(attackPotButton);
+            }
+            else if (rarity.equals("dPot")) {
+                availableItems.remove(defensePotButton);
+            }
+            else if (rarity.equals("bomb")) {
+                availableItems.remove(bombButton);
+            }
+        }
     }
 
 }
