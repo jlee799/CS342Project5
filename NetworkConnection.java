@@ -251,15 +251,16 @@ public abstract class NetworkConnection {
 		
 		public void run() {
 			
-			// ServerSocket ss = null;
-			try ( ServerSocket ss = new ServerSocket( getPort()) ){
-			// ss = new ServerSocket( getPort());
-				/*
+			ServerSocket ss = null;
+			// try ( ServerSocket ss = new ServerSocket( getPort()) ){
+			try{
+			ss = new ServerSocket( getPort());
+			
 			}
 			catch( Exception e) {
 				callback.accept("Connection Closed");
 			}
-			*/
+			
 			
 			while( true) {
 				
@@ -307,11 +308,12 @@ public abstract class NetworkConnection {
 					}
 				}	
 			}
-			
+			/*
 			}
 			catch( Exception e) {
 				callback.accept("Connection Closed");
 			}
+			*/
 		}
 		
 		public ArrayList<ClientThread> getArrayCT(){
