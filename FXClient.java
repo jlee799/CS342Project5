@@ -518,6 +518,33 @@ public class FXClient extends Application {
         availableItems.add(defensePotButton);
         availableItems.add(bombButton);
 
+        /* disabling buttons by default */
+
+        bronzeSwordButton.setDisable(true);
+        silverSwordButton.setDisable(true);
+        goldSwordButton.setDisable(true);
+        diamondSwordButton.setDisable(true);
+
+        bronzeShieldButton.setDisable(true);
+        silverShieldButton.setDisable(true);
+        goldShieldButton.setDisable(true);
+        diamondShieldButton.setDisable(true);
+
+        bronzeHelmetButton.setDisable(true);
+        silverHelmetButton.setDisable(true);
+        goldHelmetButton.setDisable(true);
+        diamondHelmetButton.setDisable(true);
+
+        bronzeChestButton.setDisable(true);
+        silverChestButton.setDisable(true);
+        goldChestButton.setDisable(true);
+        diamondChestButton.setDisable(true);
+
+        healthPotButton.setDisable(true);
+        attackPotButton.setDisable(true);
+        defensePotButton.setDisable(true);
+        bombButton.setDisable(true);
+
         setItemSelectButtonActions();
 
         itemSelectScene = new Scene(bp, windowWidth,windowHeight);
@@ -975,7 +1002,7 @@ public class FXClient extends Application {
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
         rollButton.setDisable(true);
     }
 
