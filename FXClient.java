@@ -23,13 +23,14 @@ import javafx.scene.control.Separator;
 
 public class FXClient extends Application {
 
-    String ipAdd;
-    int portNum;
+    String ipAdd = "127.0.0.1";
+    int portNum = 5555;
     String idNumStr;
     int idNumInt;
     private ClientNetworkConnectionRPS conn = null;
     String username;
     ArrayList<Player> players = new ArrayList<>();
+    ArrayList<Button> availableItems = new ArrayList<>(); // added code
 
     int windowWidth = 960;
     int windowHeight = 700;
@@ -487,6 +488,33 @@ public class FXClient extends Application {
 
         bp.setBottom(rollHBox);
 
+        /* adding items to available items - added code */
+
+        availableItems.add(bronzeSwordButton);
+        availableItems.add(silverSwordButton);
+        availableItems.add(goldSwordButton);
+        availableItems.add(diamondSwordButton);
+
+        availableItems.add(bronzeShieldButton);
+        availableItems.add(silverShieldButton);
+        availableItems.add(goldShieldButton);
+        availableItems.add(diamondShieldButton);
+
+        availableItems.add(bronzeHelmetButton);
+        availableItems.add(silverHelmetButton);
+        availableItems.add(goldHelmetButton);
+        availableItems.add(diamondHelmetButton);
+
+        availableItems.add(bronzeChestButton);
+        availableItems.add(silverChestButton);
+        availableItems.add(goldChestButton);
+        availableItems.add(diamondChestButton);
+
+        availableItems.add(healthPotButton);
+        availableItems.add(attackPotButton);
+        availableItems.add(defensePotButton);
+        availableItems.add(bombButton);
+
         setItemSelectButtonActions();
 
         itemSelectScene = new Scene(bp, windowWidth,windowHeight);
@@ -838,6 +866,7 @@ public class FXClient extends Application {
 
     public void choose() {
         //enable buttons for items still available
+
     }
 
     public void setPick(String id, String pickType, String pick) {
