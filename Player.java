@@ -18,6 +18,7 @@ public class Player {
 	
 	private String move;
 	private boolean defending;
+	private boolean usedItem;
 	
 	public Player(){
 		username = null;

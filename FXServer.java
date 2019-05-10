@@ -508,7 +508,7 @@ public class FXServer extends Application {
 		if( conn.clientExists( "4")) {
 			addToClientList( "4", game.getP4().getUsername());
 		}
-		
+		updateClientNum();
 	}
 	
 	
