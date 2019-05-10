@@ -244,6 +244,7 @@ public class FXServer extends Application {
 		switch(id) {
 			case "1":
 				game.setUsername( id, username);
+				addToClientList( id, username);
 			case "2":
 				try {
 					conn.sendClient( id, "connected-1-"+ game.getP2().getUsername());
@@ -316,7 +317,8 @@ public class FXServer extends Application {
 	
 	// will add the new client to the end of the client list
 	public void addToClientList( String clientNum, String username) {
-		clientListTA.appendText( "Id: "+ clientNum+ "Username: " + username + "\n");
+		clientListTA.appendText( "Id: "+ clientNum+ " Username: " + username + "\n");
+		updateClientNum();
 	}
 	
 	public void addToInOutString( String line) {
