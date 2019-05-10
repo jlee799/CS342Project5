@@ -755,7 +755,7 @@ public class ClientProcessing extends Application {
             case "roll":
                 setRoll(tokens[1], tokens[2]);
             case "choose":
-
+		choose();
             case "picked":
                 setPick(tokens[1], tokens[2], tokens[3]);
             case "start":
@@ -806,7 +806,7 @@ public class ClientProcessing extends Application {
                 players.get(idInt-1).setHelmet(pick);
             case "chest":
                 players.get(idInt-1).setChest(pick);
-            case "legs":
+            case "shield":
                 players.get(idInt-1).setShield(pick);
             case "item":
                 players.get(idInt-1).setItem(pick);
