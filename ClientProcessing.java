@@ -12,7 +12,6 @@ public class ClientProcessing {
 	private ClientNetworkConnectionRPS conn = null;
 	String username;
 	ArrayList<Player> players = new ArrayList<Player>(4);
-	//StateOfGame game;
 	
 	private ClientRPS createClient() {
         
@@ -72,7 +71,7 @@ public class ClientProcessing {
 	}
 	
 	public void choose() {
-		
+		//enable buttons for items still available
 	}
 	
 	public void setPick(String id, String pickType, String pick) {
@@ -93,7 +92,7 @@ public class ClientProcessing {
 	}
 	
 	public void start() {
-		
+		//Enable buttons to make a move
 	}
 	
 	public void setAtkStat(String id, String atkStat) {
@@ -115,7 +114,7 @@ public class ClientProcessing {
 	}
 	
 	public void startNextRound() {
-		
+		//Enable buttons to make a move
 	}
 	
 	public void winner(String winnerID) {
