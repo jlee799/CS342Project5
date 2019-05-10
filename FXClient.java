@@ -978,9 +978,9 @@ public class FXClient extends Application {
         makePlayerNameBold();
         /* set health texts */
         healthText1.setText("Health: " + players.get(0).getHealth());
-        healthText2.setText("Health: " + players.get(0).getHealth());
-        healthText3.setText("Health: " + players.get(0).getHealth());
-        healthText4.setText("Health: " + players.get(0).getHealth());
+        healthText2.setText("Health: " + players.get(1).getHealth());
+        healthText3.setText("Health: " + players.get(2).getHealth());
+        healthText4.setText("Health: " + players.get(3).getHealth());
         /* set correct images */
         swordImageView1.setImage(swordImage(players.get(0).getWeapon()));
         swordImageView2.setImage(swordImage(players.get(1).getWeapon()));
@@ -1044,6 +1044,7 @@ public class FXClient extends Application {
         int idInt = Integer.parseInt(id);
         int healthInt = Integer.parseInt(health);
         players.get(idInt-1).setHealth(healthInt);
+        healthText4.setText("Health: " + players.get(idInt-1).getHealth());
     }
 
     public void startNextRound() {
@@ -1053,6 +1054,7 @@ public class FXClient extends Application {
         if (didUseItem == false) {
             useItemButton.setDisable(false);
         }
+        playMessageString = "";
         playMessageText.setText(playMessageString);
     }
 
