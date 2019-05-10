@@ -1,4 +1,4 @@
-//package Client;
+package Client;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Separator;
 
-public class FXClient extends Application {
+public class ClientProcessing extends Application {
 
     String ipAdd;
     int portNum;
@@ -149,102 +149,101 @@ public class FXClient extends Application {
         /* sword buttons */
 
         bronzeSwordButton.setOnAction( event -> {
-        	pickItem("sword", "1");
+
         });
 
         silverSwordButton.setOnAction( event -> {
-        	pickItem("sword", "2");
+
         });
 
         goldSwordButton.setOnAction( event -> {
-        	pickItem("sword", "3");
+
         });
 
         diamondSwordButton.setOnAction( event -> {
-        	pickItem("sword", "4");
+
         });
 
         /* shield buttons */
 
         bronzeShieldButton.setOnAction( event -> {
-        	pickItem("shield", "1");
+
         });
 
         silverShieldButton.setOnAction( event -> {
-        	pickItem("shield", "2");
+
         });
 
         goldShieldButton.setOnAction( event -> {
-        	pickItem("shield", "3");
+
         });
 
         diamondShieldButton.setOnAction( event -> {
-        	pickItem("shield", "4");
+
         });
 
         /* helmet buttons */
 
         bronzeHelmetButton.setOnAction( event -> {
-        	pickItem("helmet", "1");
+
         });
 
         silverHelmetButton.setOnAction( event -> {
-        	pickItem("helmet", "2");
+
         });
 
         goldHelmetButton.setOnAction( event -> {
-        	pickItem("helmet", "3");
+
         });
 
         diamondHelmetButton.setOnAction( event -> {
-        	pickItem("helmet", "4");
+
         });
 
         /* chest buttons */
 
         bronzeChestButton.setOnAction( event -> {
-        	pickItem("chest", "1");
+
         });
 
         silverChestButton.setOnAction( event -> {
-        	pickItem("chest", "2");
+
         });
 
         goldChestButton.setOnAction( event -> {
-        	pickItem("chest", "3");
+
         });
 
         diamondChestButton.setOnAction( event -> {
-        	pickItem("chest", "4");
+
         });
 
         /* item buttons */
 
         healthPotButton.setOnAction( event -> {
-        	pickItem("item", "hPot");
+
         });
 
         attackPotButton.setOnAction( event -> {
-        	pickItem("item", "aPot");
+
         });
 
         defensePotButton.setOnAction( event -> {
-        	pickItem("item", "dPot");
+
         });
 
         bombButton.setOnAction( event -> {
-        	pickItem("item", "bomb");
+
         });
     }
 
     private void setPlayButtonActions() {
         attackButton.setOnAction( event -> {
-        	String playerToAttack = insertPlayerTextField.getText();
-        	
+
         });
 
         defendButton.setOnAction( event -> {
-        	defend();
+
         });
 
         useItemButton.setOnAction( event -> {
@@ -296,8 +295,6 @@ public class FXClient extends Application {
         });
 
         connect.setOnAction(event -> {
-
-
             try {
                 conn = createClient();
                 conn.startConn();
@@ -752,6 +749,7 @@ public class FXClient extends Application {
 
             case "id":
                 setID(tokens[1]);
+                sendUsername(enterNameTextField.getText());
             case "connected":
                 setUsername(tokens[1],tokens[2]);
             case "roll":
@@ -808,7 +806,7 @@ public class FXClient extends Application {
                 players.get(idInt-1).setHelmet(pick);
             case "chest":
                 players.get(idInt-1).setChest(pick);
-            case "shield":
+            case "legs":
                 players.get(idInt-1).setShield(pick);
             case "item":
                 players.get(idInt-1).setItem(pick);
@@ -900,14 +898,6 @@ public class FXClient extends Application {
             System.out.println(e.getMessage());
         }
     }
-    
-    public String usernameToID(String name) {
-		for (int i = 0; i < 4; i++) {
-			if (players.get(i).getUsername().equals(name))
-				return players.get(i).getId();
-		}
-		return "";
-	}
 
     public void defend() {
         try {
