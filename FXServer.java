@@ -271,10 +271,11 @@ public class FXServer extends Application {
 				break;
 			case "2":
 				try {
-					conn.sendClient( id, "connected-1-"+ game.getP2().getUsername());
-					addToInOutString( "Out: "+"connected-1-"+ game.getP2().getUsername());
+					conn.sendClient( id, "connected-1-"+ game.getP1().getUsername());
+					addToInOutString( "Out: "+"connected-1-"+ game.getP1().getUsername());
 					if( game.getP1().getRoll() != 0) {
 						conn.sendClient( id, "roll-1-"+game.getP1().getRoll());
+						addToInOutString( "Out: "+"roll-1-"+game.getP1().getRoll());
 					}
 					conn.sendAll( "connected-"+id+"-"+username);
 					addToInOutString( "Out to all: "+"connected-"+id+"-"+username);
