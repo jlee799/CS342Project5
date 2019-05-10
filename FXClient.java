@@ -1044,7 +1044,18 @@ public class FXClient extends Application {
         int idInt = Integer.parseInt(id);
         int healthInt = Integer.parseInt(health);
         players.get(idInt-1).setHealth(healthInt);
-        healthText4.setText("Health: " + players.get(idInt-1).getHealth());
+        if (idInt == 1) {
+            healthText1.setText("Health: " + players.get(0).getHealth());
+        }
+        else if (idInt == 2) {
+            healthText2.setText("Health: " + players.get(1).getHealth());
+        }
+        else if (idInt == 3) {
+            healthText3.setText("Health: " + players.get(2).getHealth());
+        }
+        else if (idInt == 4) {
+            healthText4.setText("Health: " + players.get(3).getHealth());
+        }
     }
 
     public void startNextRound() {
@@ -1069,6 +1080,7 @@ public class FXClient extends Application {
 
     public void receiveMessage(String message) {
         playMessageString =  playMessageString + message + "\n";
+        playMessageText.setText(playMessageString);
     }
 
 
