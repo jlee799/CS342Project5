@@ -236,6 +236,10 @@ public class FXClient extends Application {
         bombButton.setOnAction( event -> {
 		pickItem("item", "bomb");
         });
+
+        rollButton.setOnAction( event -> {
+            rollDie();
+        });
     }
 
     private void setPlayButtonActions() {
@@ -891,14 +895,19 @@ public class FXClient extends Application {
         switch(pickType) {
             case "sword":
                 players.get(idInt-1).setWeapon(pick);
+                break;
             case "helmet":
                 players.get(idInt-1).setHelmet(pick);
+                break;
             case "chest":
                 players.get(idInt-1).setChest(pick);
+                break;
             case "shield":
                 players.get(idInt-1).setShield(pick);
+                break;
             case "item":
                 players.get(idInt-1).setItem(pick);
+                break;
         }
     }
 
@@ -966,6 +975,8 @@ public class FXClient extends Application {
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
+        
+        rollButton.setDisable(true);
     }
 
     public void pickItem(String pickType, String pick) {
