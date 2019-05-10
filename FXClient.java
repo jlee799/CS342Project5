@@ -716,6 +716,44 @@ public class FXClient extends Application {
         sceneMap.put("play", playScene);
     }
 
+    public void disableItemButtons(boolean bool) {
+    	bronzeSwordButton.setDisable(bool);
+    	silverSwordButton.setDisable(bool);
+    	goldSwordButton.setDisable(bool);
+    	diamondSwordButton.setDisable(bool);
+    	
+    	bronzeShieldButton.setDisable(bool);
+    	silverShieldButton.setDisable(bool);
+    	goldShieldButton.setDisable(bool);
+    	diamondShieldButton.setDisable(bool);
+    	
+    	bronzeHelmetButton.setDisable(bool);
+    	silverHelmetButton.setDisable(bool);
+    	goldHelmetButton.setDisable(bool);
+    	diamondHelmetButton.setDisable(bool);
+    	
+    	bronzeChestButton.setDisable(bool);
+    	silverChestButton.setDisable(bool);
+    	goldChestButton.setDisable(bool);
+    	diamondChestButton.setDisable(bool);
+    	
+    	healthPotButton.setDisable(bool);
+    	attackPotButton.setDisable(bool);
+    	defensePotButton.setDisable(bool);
+    	bombButton.setDisable(bool);
+    }
+    
+    public void disableMoveButtons(boolean bool) {
+    	attackButton.setDisable(bool);
+    	defendButton.setDisable(bool);
+    	useItemButton.setDisable(bool);
+    }
+    
+    public static void main(String[] args) {
+
+        launch(args);
+    }
+	
     @Override
     public void start(Stage primaryStage) throws Exception {
         sceneMap = new HashMap<>();
