@@ -34,7 +34,8 @@ public class ClientProcessing {
         
         	case "id":
         		setID(tokens[1]);
-        		//idNum = tokens[1];
+        	case "connected":
+        		setUsername(tokens[1],tokens[2]);
         	case "roll":
         		setRoll(tokens[1], tokens[2]);
         	case "choose":
@@ -62,6 +63,11 @@ public class ClientProcessing {
 	public void setID(String id) {
 		idNumStr = id;
 		idNumInt = Integer.parseInt(id);
+	}
+	
+	public void setUsername(String id, String username) {
+		int idInt = Integer.parseInt(id);
+		players.get(idInt-1).setUsername(username);
 	}
 	
 	public void setRoll(String id, String numRolledStr) {
