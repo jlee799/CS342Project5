@@ -272,18 +272,30 @@ public class StateOfGame {
 			switch( attackee) {
 			case "1":
 				p1.setHealth( (p1.getHealth() - (atk - p1.getDef() ) ) );
+				if( p1.getHealth() < 0) {
+					p1.setHealth( 0);
+				}
 				System.out.println( "P1 new health: "+(p1.getHealth() - (atk - p1.getDef() ) ));
 				break;
 			case "2":
 				p2.setHealth(  (p2.getHealth() - (atk - p2.getDef() ) ) );
+				if( p2.getHealth() < 0) {
+					p2.setHealth( 0);
+				}
 				System.out.println( "P2 new health: "+(p1.getHealth() - (atk - p2.getDef() ) ));
 				break;
 			case "3":
 				p3.setHealth(  (p3.getHealth() - (atk - p3.getDef() ) ) );
+				if( p3.getHealth() < 0) {
+					p3.setHealth( 0);
+				}
 				System.out.println( "P3 new health: "+(p1.getHealth() - (atk - p3.getDef() ) ));
 				break;
 			case "4":
 				p4.setHealth(  (p4.getHealth() - (atk - p4.getDef() ) ) );
+				if( p4.getHealth() < 0) {
+					p4.setHealth( 0);
+				}
 				System.out.println( "P4 new health: "+(p1.getHealth() - (atk - p4.getDef() ) ));
 				break;
 			}
@@ -347,6 +359,7 @@ public class StateOfGame {
 				p2.setHealth( p2.getHealth() - bombDmg);
 				p3.setHealth( p3.getHealth() - bombDmg);
 				p4.setHealth( p4.getHealth() - bombDmg);
+				negHealth();
 			}
 			break;
 		case "2":
@@ -363,6 +376,7 @@ public class StateOfGame {
 				p1.setHealth( p1.getHealth() - bombDmg);
 				p3.setHealth( p3.getHealth() - bombDmg);
 				p4.setHealth( p4.getHealth() - bombDmg);
+				negHealth();
 			}
 			break;
 		case "3":
@@ -379,6 +393,7 @@ public class StateOfGame {
 				p1.setHealth( p1.getHealth() - bombDmg);
 				p2.setHealth( p2.getHealth() - bombDmg);
 				p4.setHealth( p4.getHealth() - bombDmg);
+				negHealth();
 			}
 			break;
 		case "4":
@@ -395,11 +410,27 @@ public class StateOfGame {
 				p1.setHealth( p1.getHealth() - bombDmg);
 				p2.setHealth( p2.getHealth() - bombDmg);
 				p3.setHealth( p3.getHealth() - bombDmg);
+				negHealth();
 			}
 			break;
 		default:
 			break;
 			
+		}
+	}
+	
+	public void negHealth() {
+		if( p1.getHealth() < 0) {
+			p1.setHealth( 0);
+		}
+		if( p2.getHealth() < 0) {
+			p2.setHealth( 0);
+		}
+		if( p3.getHealth() < 0) {
+			p3.setHealth( 0);
+		}
+		if( p4.getHealth() < 0) {
+			p4.setHealth( 0);
 		}
 	}
 	
